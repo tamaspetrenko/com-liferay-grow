@@ -7,5 +7,22 @@
 	</compatibility>
 	<theme id="grow-theme" name="GROW Theme">
 		<template-extension>ftl</template-extension>
+		<settings>
+			<setting configurable="true" key="bullet-style" options="dots,arrows" type="select" value="dots" />
+			<setting configurable="true" key="show-maximize-minimize-application-links" type="checkbox" value="false" />
+			<setting configurable="true" key="show-header-search" type="checkbox" value="true" />
+			<setting configurable="false" key="show-site-name-default" value="true" />
+			<setting configurable="false" key="show-site-name-supported" value="true" />
+		</settings>
+		<portlet-decorator id="barebone" name="Barebone">
+			<portlet-decorator-css-class>portlet-barebone</portlet-decorator-css-class>
+		</portlet-decorator>
+		<portlet-decorator id="borderless" name="Borderless">
+			<portlet-decorator-css-class>portlet-borderless</portlet-decorator-css-class>
+		</portlet-decorator>
+		<portlet-decorator id="decorate" name="Decorate">
+			<default-portlet-decorator>true</default-portlet-decorator>
+			<portlet-decorator-css-class>portlet-decorate</portlet-decorator-css-class>
+		</portlet-decorator>
 	</theme>
 </look-and-feel>
