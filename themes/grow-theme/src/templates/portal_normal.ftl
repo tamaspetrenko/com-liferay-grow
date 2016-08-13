@@ -21,8 +21,8 @@
 <@liferay.control_menu />
 
 <div id="wrapper">
-	<header class="container-fluid-1280" id="banner" role="banner">
-		<div class="row">
+	<header class="navbar navbar-default" id="banner" role="banner">
+		<div class="container">
 			<div class="navbar-header" id="heading">
 				<a class="${logo_css_class}" href="${site_default_url}" title="<@liferay.language_format arguments="${site_name}" key="go-to-x" />">
 					<img alt="${logo_description}" height="64" src="${site_logo}" />

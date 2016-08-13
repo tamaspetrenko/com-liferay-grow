@@ -260,3 +260,65 @@ body {
 }
 
 @import "assan/style";
+
+.control-menu-level-1 {
+	& > .container-fluid-1280 {
+		@media screen and (min-width: $grid-float-breakpoint) {
+			padding-bottom: 5px !important;
+			padding-top: 0px !important;
+		}
+	}
+}
+
+.navbar-brand {
+	img {
+		width: 60px;
+	}
+   
+   	padding: 0 15px 0 0; 
+}
+
+.navbar-default {
+	.navbar-nav {
+		> .active > a {
+			&:after {
+				@media screen and (min-width: $grid-float-breakpoint) {
+					height: 0;
+				}
+			} 
+		}
+	}
+
+	.panel-notifications-count {
+		 background-color: $skincolor;
+	}
+}
+
+.has-control-menu {
+	#wrapper {
+		@media screen and (min-width: $grid-float-breakpoint) {
+			margin-top: 48px !important;
+		}
+	}
+}
+
+.user-icon-default {
+    background-color: $skincolor;
+    color:$lightcolor;
+}
+
+#banner {
+	padding: 10px 0 10px;
+
+	#heading {
+		.site-name {
+			color: $skincolor;
+		}
+	}
+
+	.user-personal-bar {
+		.panel-notifications-count {
+			right: -15px;
+		}
+	}
+}
