@@ -233,11 +233,11 @@ body {
 #footer {
 	background-color: $solid-color;
 	color: #FFF;
-	margin-bottom: 60px;
 	padding: 40px 20px;
+	margin: 0;
 
-	a {
-		color: #FFF;
+	.footer-btm {
+		color: #999;
 	}
 }
 

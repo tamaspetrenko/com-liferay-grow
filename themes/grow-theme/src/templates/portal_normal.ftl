@@ -69,9 +69,15 @@
 		</#if>
 	</section>
 
-	<footer class="container-fluid-1280" id="footer" role="contentinfo">
-		<div class="row">
-			<@liferay.language key="powered-by" /> <a href="http://www.liferay.com" rel="external">Liferay</a>
+	<footer id="footer" role="contentinfo">
+		<div class="container">
+			<div class="row">
+				<div class="footer-btm text-center">
+					<span>
+						<@liferay.language key="powered-by" /> <a href="http://www.liferay.com" rel="external">Liferay</a>
+					</span>
+				</div>
+			</div>
 		</div>
 	</footer>
 </div>
