@@ -10,6 +10,9 @@
 	<meta content="initial-scale=1.0, width=device-width" name="viewport" />
 
 	<@liferay_util["include"] page=top_head_include />
+
+	<script type="text/javascript" src="${javascript_folder}/revolution/jquery.themepunch.tools.min.js"></script>
+	<script type="text/javascript" src="${javascript_folder}/revolution/jquery.themepunch.revolution.min.js"></script>
 </head>
 
 <body class="${css_class}">
