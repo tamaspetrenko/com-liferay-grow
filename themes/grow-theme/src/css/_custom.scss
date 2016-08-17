@@ -336,6 +336,30 @@ body {
 		border: none;
 	}
 }
+
+.taglib-page-iterator {
+	.search-results {
+		display: inline-block;
+
+		a {
+			background-color: #ccc;
+			color: $lightcolor;
+			padding: 3px 9px;
+
+			&:hover {
+				z-index: 2;
+    			color: #23527c;
+    			background-color: #eee;
+    			border-color: #ddd;
+			}
+		}
+
+		strong {
+			background-color: #32c5d2;
+			color: $lightcolor;
+			padding: 3px 9px;
+		}
+	}
 }
 
 .top-users {
