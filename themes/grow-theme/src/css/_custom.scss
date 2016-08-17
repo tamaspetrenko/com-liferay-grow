@@ -304,14 +304,31 @@ body {
 }
 
 .portlet-title-text {
-	background-color: $skincolor;
-	color: $lightcolor;
-	display: block;
-	font-family: "Roboto", sans-serif;
-	font-size: 24px;
-	font-weight: 300;
-	max-width: 100%;
-	text-align: center;
+	color: #000;
+	font-family: "Source Sans Pro", sans-serif;
+	font-size: 20px;
+	font-weight: 600;
+	font-style: normal;
+	margin: 0 0 20px;
+	padding-bottom: 10px;
+	position: relative;
+	text-transform: capitalize;
+	overflow: hidden;
+	vertical-align: middle;
+	width: 100%;
+
+	&:after {
+		position: relative;
+		left: 18px;
+		content: "";
+		display: inline-block;
+		width: 200%;
+		vertical-align: middle;
+		height: .50em;
+		margin: 0 -200% 0 0;
+		border-top: 1px solid #eee;
+		border-bottom: 1px solid #eee;
+	}
 }
 
 .user-icon-default {
