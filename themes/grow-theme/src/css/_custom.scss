@@ -303,9 +303,47 @@ body {
 	}
 }
 
+.portlet-title-text {
+	background-color: $skincolor;
+	color: $lightcolor;
+	display: block;
+	font-family: "Roboto", sans-serif;
+	font-size: 24px;
+	font-weight: 300;
+	max-width: 100%;
+	text-align: center;
+}
+
 .user-icon-default {
     background-color: $skincolor;
-    color:$lightcolor;
+    color: $lightcolor;
+}
+
+.lfr-search-container {
+	margin-top: 0;
+
+	table, tbody > tr > td {
+		border: none;
+	}
+
+	.table-striped > tbody > tr:nth-of-type(odd) {
+		background-color: inherit;
+	}
+}
+
+.list-group-card.list-unstyled {
+	.card {
+		border: none;
+	}
+}
+}
+
+.top-users {
+	text-align: right;
+}
+
+.separator {
+	border-top: 1px dotted $skincolor;
 }
 
 #banner {
