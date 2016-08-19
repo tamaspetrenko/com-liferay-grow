@@ -13,6 +13,7 @@
 
 	<script type="text/javascript" src="${javascript_folder}/revolution/jquery.themepunch.tools.min.js"></script>
 	<script type="text/javascript" src="${javascript_folder}/revolution/jquery.themepunch.revolution.min.js"></script>
+	<script type="text/javascript" src="${javascript_folder}/bootstrap/bootstrap.min.js"></script>
 </head>
 
 <body class="${css_class}">

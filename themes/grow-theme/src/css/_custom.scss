@@ -271,6 +271,18 @@ body {
 	}
 }
 
+nav {
+	.affix {
+		@media screen and (min-width: $screen-md-min) {
+			top: 70px;
+			position: fixed;
+			min-width: 273px;
+		}
+
+		position: relative;
+	}
+}
+
 .navbar-brand {
 	img {
 		width: 60px;

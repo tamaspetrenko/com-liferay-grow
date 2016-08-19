@@ -12,3 +12,40 @@
 @import "_header.scss";
 @import "_footers.scss";
 @import "_rev-style.scss";
+@import "font-awesome/css/font-awesome";
+
+.cat-list {
+	> li {
+		padding: 5px 0;
+		border-bottom: 1px solid #e5e5e5;
+
+		a {
+			color:#888;
+			margin-right: 10px;
+
+			&:hover{
+				color:$skincolor;
+			}
+		}
+
+		i {
+			color:#888;
+			margin-right: 10px;
+			@include transition (all 0.3s ease-in-out);
+		}
+
+		&.active {
+			> a {
+				color: $skincolor;
+			}
+
+			ul {
+				font-style: italic;
+			}
+		}
+
+		&:hover i {
+			margin-left: 5px;
+		}
+	}
+}
