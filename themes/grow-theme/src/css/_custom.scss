@@ -264,6 +264,14 @@ body {
 @import "assan/owl/carousel.css";
 @import "assan/owl/theme.css";
 
+$primary-font:'Source Sans Pro', sans-serif;
+
+.btn-primary {
+	border-color: $skincolor;
+    color: $lightcolor;
+    background-color: $skincolor;
+}
+
 .control-menu-level-1 {
 	& > .container-fluid-1280 {
 		@media screen and (min-width: $grid-float-breakpoint) {
@@ -279,6 +287,7 @@ nav {
 			top: 70px;
 			position: fixed;
 			min-width: 273px;
+			max-width: 273px;
 		}
 
 		position: relative;
@@ -319,7 +328,7 @@ nav {
 
 .portlet-title-text {
 	color: #000;
-	font-family: "Source Sans Pro", sans-serif;
+	font-family: $primary-font;
 	font-size: 20px;
 	font-weight: 600;
 	font-style: normal;
@@ -417,3 +426,124 @@ nav {
 		}
 	}
 }
+
+/**Wiki**/
+
+.portlet-barebone.portlet-wiki {
+	h4 {
+		&.text-default{
+			color: #333;
+			font-size: 30px;
+			font-weight: 400;
+			letter-spacing: 0px;
+			margin-bottom: 40px;
+			margin-top: 40px;
+			text-align: center;
+			text-transform: uppercase;
+		}
+
+		&:after {
+			content: ' ';
+			display: block;
+			width: 70px;
+			height: 1px;
+			border-top: 1px solid #32c5d2;
+			margin: 20px auto;
+		}
+	}
+
+	.attachments.row {
+		margin: 20px !important;	
+	}
+
+	fieldset.add-comment {
+		background-color: #f5f5f5;
+		padding: 20px 30px;
+		margin-bottom: 50px;
+	}
+
+	.list-group {
+		box-shadow: none;
+	}
+
+	.navbar-default {
+		 @include box-shadow(none);
+		 min-height: 40px;
+		 padding: 0 15px;
+	}
+
+	.navbar-nav {
+		border-bottom: 1px solid #ddd;
+		float: none;
+		padding: 0px;
+
+		li {
+			padding: 0px;
+			margin-right: 10px;
+
+			a {
+				display: block;
+				padding: 5px 8px;
+				text-transform: capitalize;
+				font-size: 13px;
+				color: #777;
+			}
+
+			&.active {
+				border-bottom: 2px solid transparent;
+				border-bottom-color: $skincolor;
+				
+				a {
+					color: $skincolor;
+				}
+			}
+
+			&:hover {
+				a {
+					color: $skincolor;
+				}
+			}
+		}
+	}
+
+	.wiki-content {
+		h1 {
+			color: $skincolor;
+			margin: 15px 0 25px 0;
+		}
+	}
+
+	.col-md-4.col-xs-12 {
+		display:none;
+	}
+
+	.owl-theme {
+		h3 {
+			font-size: 21px;
+
+			a:hover, a:focus {
+				color: $skincolor;
+				text-decoration: none;
+			}
+		}
+
+		.owl-controls {
+			margin-top: 10px;
+			text-align: right;
+			position: absolute;
+			right:20px;
+			bottom: 0px;
+
+			.owl-buttons {
+				div {
+					padding: 0px;
+					@include border-radius(0px);
+					background-color: transparent;
+					font-size: 30px;
+					color: $skincolor;
+				}
+			}
+		}
+	}
+}
+
