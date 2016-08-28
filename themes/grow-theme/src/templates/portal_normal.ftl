@@ -11,8 +11,6 @@
 
 	<@liferay_util["include"] page=top_head_include />
 
-	<script type="text/javascript" src="${javascript_folder}/revolution/jquery.themepunch.tools.min.js"></script>
-	<script type="text/javascript" src="${javascript_folder}/revolution/jquery.themepunch.revolution.min.js"></script>
 	<script type="text/javascript" src="${javascript_folder}/bootstrap/bootstrap.min.js"></script>
 </head>
 
@@ -89,6 +87,10 @@
 <@liferay_util["include"] page=body_bottom_include />
 
 <@liferay_util["include"] page=bottom_include />
+
+<script type="text/javascript" src="${javascript_folder}/revolution/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="${javascript_folder}/revolution/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="${javascript_folder}/owl/owl.carousel.min.js"></script>
 
 </body>
 
