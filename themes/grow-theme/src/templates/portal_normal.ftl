@@ -55,7 +55,7 @@
 		</div>
 	</header>
 
-	<section class="container-fluid-1280" id="content">
+	<section class="container-fluid-1824" id="content">
 		<h1 class="hide-accessible">${the_title}</h1>
 
 		<#if selectable>
