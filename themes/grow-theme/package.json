@@ -9,7 +9,22 @@
 		"screenshot": "",
 		"rubySass": false,
 		"templateLanguage": "ftl",
-		"version": "7.0"
+		"version": "7.0",
+		"themeletDependencies": {
+			"assan-sign-in-themelet": {
+				"liferayTheme": {
+					"screenshot": "",
+					"themelet": true,
+					"version": "7.0"
+				},
+				"name": "assan-sign-in-themelet",
+				"publishConfig": {
+					"tag": "7_0_x"
+				},
+				"version": "1.0.0",
+				"path": "C:\\Users\\zsagia\\AppData\\Roaming\\npm\\node_modules\\assan-sign-in-themelet"
+			}
+		}
 	},
 	"devDependencies": {
 		"gulp": "^3.8.10",
@@ -18,5 +33,8 @@
 	},
 	"publishConfig": {
 		"tag": "7_0_x"
+	},
+	"dependencies": {
+		"assan-sign-in-themelet": "C:\\Users\\zsagia\\AppData\\Roaming\\npm\\node_modules\\assan-sign-in-themelet"
 	}
 }

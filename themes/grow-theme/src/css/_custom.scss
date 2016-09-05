@@ -340,19 +340,6 @@ nav {
 	overflow: hidden;
 	vertical-align: middle;
 	width: 100%;
-
-	&:after {
-		position: relative;
-		left: 18px;
-		content: "";
-		display: inline-block;
-		width: 200%;
-		vertical-align: middle;
-		height: .50em;
-		margin: 0 -200% 0 0;
-		border-top: 1px solid #eee;
-		border-bottom: 1px solid #eee;
-	}
 }
 
 .user-icon-default {
@@ -431,24 +418,13 @@ nav {
 
 .portlet-barebone.portlet-wiki {
 	h4 {
-		&.text-default{
-			color: #333;
-			font-size: 30px;
-			font-weight: 400;
-			letter-spacing: 0px;
-			margin-bottom: 40px;
-			margin-top: 40px;
-			text-align: center;
-			text-transform: uppercase;
-		}
-
-		&:after {
-			content: ' ';
-			display: block;
-			width: 70px;
-			height: 1px;
-			border-top: 1px solid #32c5d2;
-			margin: 20px auto;
+		&.text-default {
+			color: #060606;
+			font-size: 25px;
+			font-weight: 600;
+			line-height: 42px;
+			margin: 15px 0 15px 0;
+			text-transform: capitalize;
 		}
 	}
 
@@ -511,6 +487,9 @@ nav {
 			color: $skincolor;
 			margin: 15px 0 25px 0;
 		}
+		h4.text-default {
+			margin-left: 0
+		}
 	}
 
 	.col-md-4.col-xs-12 {
@@ -545,5 +524,25 @@ nav {
 			}
 		}
 	}
+}
+
+/** Log In **/
+#portlet_com_liferay_login_web_portlet_LoginPortlet {
+    padding: 20px;
+    background-color: #f5f5f8;
+
+    form a {
+        display: inline-block;
+        margin-left: 5px;
+        @media screen and (max-width: 320px) {
+            margin-top: 10px;
+        }
+    }
+
+    .btn-fb-login{
+        background-color: #3b5998;
+        color:#fff;
+        @include border-radius (3px);
+    }
 }
 
