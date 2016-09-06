@@ -30,46 +30,6 @@
 		box-shadow: none;
 	}
 
-	.navbar-default {
-		 @include box-shadow(none);
-		 min-height: 40px;
-		 padding: 0 15px;
-	}
-
-	.navbar-nav {
-		border-bottom: 1px solid #ddd;
-		float: none;
-		padding: 0px;
-
-		li {
-			padding: 0px;
-			margin-right: 10px;
-
-			a {
-				display: block;
-				padding: 5px 8px;
-				text-transform: capitalize;
-				font-size: 13px;
-				color: #777;
-			}
-
-			&.active {
-				border-bottom: 2px solid transparent;
-				border-bottom-color: $skincolor;
-				
-				a {
-					color: $skincolor;
-				}
-			}
-
-			&:hover {
-				a {
-					color: $skincolor;
-				}
-			}
-		}
-	}
-
 	.owl-theme {
 		h3 {
 			font-size: 21px;
