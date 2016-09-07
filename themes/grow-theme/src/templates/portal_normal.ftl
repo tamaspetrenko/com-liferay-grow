@@ -20,9 +20,7 @@
 
 <@liferay_util["include"] page=body_top_include />
 
-<#if show_control_menu>
-	<@liferay.control_menu />
-</#if>
+<@liferay.control_menu />
 
 <div id="wrapper">
 	<header class="navbar navbar-default" id="banner" role="banner">
