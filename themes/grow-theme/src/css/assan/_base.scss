@@ -56,13 +56,6 @@ hr {
     height: 1px;
     margin: 22px 0 22px 0;
 }
-.badge{
-    font-weight: normal;
-    margin-left: 5px;
-    @include border-radius (0px);
-    background-color: $skincolor;
-    padding: 3px 6px;
-}
 a {
     color: #333;
     @include transition (all 200ms ease-in);
