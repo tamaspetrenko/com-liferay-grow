@@ -477,7 +477,6 @@ nav {
 	}
 
 	.list-group-item {
-
 		border-bottom: 1px solid #000;
 
 		h5 {
@@ -497,6 +496,7 @@ nav {
 				}
 			}
 		}
+
 		h6 {
 			line-height: 24px;
 			padding: 0;
@@ -509,49 +509,49 @@ nav {
 				font-size: 15px;
 		}
 
-			.taglib-asset-tags-summary {
-				color:#999;
+		.taglib-asset-tags-summary {
+			color:#999;
+			font-size: 14px;
+			margin-right: 0px;
+			@include box-shadow (none);
+			text-transform: capitalize;
+
+			.badge {
 				font-size: 14px;
-				margin-right: 0px;
-				@include box-shadow (none);
-				text-transform: capitalize;
+				background-color: transparent;
+				color: #999;
+				font-weight: normal;
+				padding-left: 0px;
+				text-align: left;
 
-				.badge {
-					font-size: 14px;
-					background-color: transparent;
-					color: #999;
-					font-weight: normal;
-					padding-left: 0px;
-					text-align: left;
-
-					a:hover{
-						color:$skincolor;
-						text-decoration: underline;
-					}
-				}
-			}
-
-			.taglib-asset-categories-summary {
-				color:#999;
-				font-size: 14px;
-				margin-right: 0px;
-				@include box-shadow (none);
-				text-transform: capitalize;
-				vertical-align: middle;
-
-				.asset-category {
-					font-size: 14px;
-					background-color: transparent;
-					color: #999;
-					font-weight: normal;
-
-					a:hover{
-						color:$skincolor;
-						text-decoration: underline;
-					}
+				a:hover {
+					color:$skincolor;
+					text-decoration: underline;
 				}
 			}
 		}
+
+		.taglib-asset-categories-summary {
+			color:#999;
+			font-size: 14px;
+			margin-right: 0px;
+			@include box-shadow (none);
+			text-transform: capitalize;
+			vertical-align: middle;
+
+			.asset-category {
+				font-size: 14px;
+				background-color: transparent;
+				color: #999;
+				font-weight: normal;
+
+				a:hover {
+					color:$skincolor;
+					text-decoration: underline;
+				}
+			}
+		}
+
 		hr {
 			background-image: -webkit-linear-gradient(left, transparent, rgba(0, 0, 0, 0.2), transparent);
 			background-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.2), transparent);
