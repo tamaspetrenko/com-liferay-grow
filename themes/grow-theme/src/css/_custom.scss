@@ -391,20 +391,6 @@ nav {
 	}
 }
 
-@media (min-width: $screen-sm-min) {
-	.user-icon {
-		@include monospace(48px);
-
-		font-size: 32px;
-	}
-
-	.user-icon-lg {
-		@include monospace(72px);
-
-		font-size: 72px;
-	}
-}
-
 @import "grow/_wiki.scss";
 
 @import "grow/_log-in.scss";
