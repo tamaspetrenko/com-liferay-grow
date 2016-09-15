@@ -28,6 +28,10 @@
 
 	.list-group {
 		box-shadow: none;
+
+		.list-group-item {
+			border: none;
+		}
 	}
 
 	.owl-theme {
@@ -63,6 +67,31 @@
 		display: none;
 	}
 
+	.sidenav-content {
+		.content {
+			margin-left: 50px;
+
+			h4 {
+				margin-left: 15px;
+			}
+		}
+
+		> h4 {
+			margin-left: 60px;
+		}
+
+		> div:last-child {
+			margin-left: 60px;
+		}
+	}
+
+	.wiki-actions {
+		margin-left: -60px;
+		margin-top: 25px;
+		width: 50px;
+		z-index: 1000;
+	}
+
 	.wiki-content {
 		h1 {
 			color: $skincolor;
@@ -72,5 +101,9 @@
 		h4.text-default {
 			margin-left: 0
 		}
+	}
+
+	.wiki-body {
+		margin: 10px 0 10px 50px !important;
 	}
 }
