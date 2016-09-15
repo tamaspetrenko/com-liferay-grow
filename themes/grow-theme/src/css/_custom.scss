@@ -301,24 +301,6 @@ nav {
 	}
 }
 
-.portlet-title-text {
-	color: #000;
-	font-family: $primary-font;
-	font-style: normal;
-	max-width: 100%;
-	padding-bottom: 10px;
-	position: relative;
-	text-transform: capitalize;
-	overflow: hidden;
-	vertical-align: middle;
-	width: 100%;
-	font-size: 1.8em;
-	font-weight: 500;
-	letter-spacing: normal;
-	line-height: 24px;
-	margin-bottom: 15px;
-}
-
 .user-icon-default {
 	background-color: $skincolor;
 	color: $lightcolor;
@@ -396,5 +378,7 @@ nav {
 @import "grow/_log-in.scss";
 
 @import "../../node_modules/grow-search-results-themelet/src/css/_custom.scss";
+
+@import "grow/_portlet.scss";
 
 @import "grow/_user.scss";
