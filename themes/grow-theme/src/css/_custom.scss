@@ -81,15 +81,6 @@ $primary-font:'Source Sans Pro', sans-serif;
 	font-size: 12px;
 }
 
-.control-menu-level-1 {
-	& > .container-fluid-1280 {
-		@media screen and (min-width: $grid-float-breakpoint) {
-			padding-bottom: 5px !important;
-			padding-top: 0px !important;
-		}
-	}
-}
-
 nav {
 	.affix {
 		@media screen and (min-width: $screen-md-min) {
@@ -201,6 +192,7 @@ nav {
 
 @import "grow/_banner.scss";
 
+@import "grow/_control_menu.scss";
 
 @import "grow/_wiki.scss";
 
