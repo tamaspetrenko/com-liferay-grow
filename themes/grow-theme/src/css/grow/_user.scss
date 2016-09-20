@@ -1,6 +1,6 @@
 @media (min-width: $screen-sm-min) {
 	.user-icon {
-		@include monospace(48px);
+		@include monospace(56px);
 
 		font-size: 32px;
 	}
@@ -15,7 +15,7 @@
 .user-personal-bar {
 	@include sm {
 		position: absolute;
-		right: 30px;
+		right: 38px;
 		top: 0;
 	}
 
