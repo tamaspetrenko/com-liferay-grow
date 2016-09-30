@@ -10,20 +10,6 @@
 		"rubySass": false,
 		"templateLanguage": "ftl",
 		"version": "7.0",
-		"themeletDependencies": {
-			"grow-search-results-themelet": {
-				"liferayTheme": {
-					"screenshot": "",
-					"themelet": true,
-					"version": "7.0"
-				},
-				"name": "grow-search-results-themelet",
-				"publishConfig": {
-					"tag": "7_0_x"
-				},
-				"version": "1.0.0"
-			}
-		}
 	},
 	"devDependencies": {
 		"gulp": "^3.8.10",
@@ -32,8 +18,5 @@
 	},
 	"publishConfig": {
 		"tag": "7_0_x"
-	},
-	"dependencies": {
-		"grow-search-results-themelet": "7_0_x"
 	}
 }
