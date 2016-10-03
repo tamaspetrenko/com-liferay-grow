@@ -9,7 +9,7 @@
 		"screenshot": "",
 		"rubySass": false,
 		"templateLanguage": "ftl",
-		"version": "7.0",
+		"version": "7.0"
 	},
 	"devDependencies": {
 		"gulp": "^3.8.10",
