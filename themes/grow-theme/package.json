@@ -22,6 +22,18 @@
 					"tag": "7_0_x"
 				},
 				"version": "3.0.0"
+			},
+			"grow-search-results-themelet": {
+				"liferayTheme": {
+					"screenshot": "",
+					"themelet": true,
+					"version": "7.0"
+				},
+				"name": "grow-search-results-themelet",
+				"publishConfig": {
+					"tag": "7_0_x"
+				},
+				"version": "3.0.0"
 			}
 		}
 	},
@@ -34,6 +46,7 @@
 		"tag": "7_0_x"
 	},
 	"dependencies": {
-		"grow-banner-themelet": "7_0_x"
+		"grow-banner-themelet": "7_0_x",
+		"grow-search-results-themelet": "7_0_x"
 	}
 }
