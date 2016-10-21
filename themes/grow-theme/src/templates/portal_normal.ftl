@@ -11,9 +11,11 @@
 
 	<@liferay_util["include"] page=top_head_include />
 
-	<script src="${javascript_folder}/bootstrap/bootstrap.min.js"></script>
+	<script type="text/javascript" src="${javascript_folder}/bootstrap/bootstrap.min.js"></script>
 
-	<script src="${javascript_folder}/config.js"></script>
+	<script type="text/javascript" src="${javascript_folder}/revolution/jquery.themepunch.tools.min.js"></script>
+	<script type="text/javascript" src="${javascript_folder}/revolution/jquery.themepunch.revolution.min.js"></script>
+	<script type="text/javascript" src="${javascript_folder}/owl/owl.carousel.min.js"></script>
 </head>
 
 <body class="${css_class}">
