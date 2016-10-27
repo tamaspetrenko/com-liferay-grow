@@ -95,6 +95,32 @@
 		margin-top: 25px;
 		width: 50px;
 		z-index: 500;
+
+		.taglib-ratings {
+			.rating-element {
+				padding-right: 10px;
+
+				&.rating-thumb-down {
+					margin-left: 0;
+				}
+
+				&.btn-block {
+					margin: 0;
+				}
+
+				&.glyphicon {
+					top: 0;
+				}
+
+				&.btn {
+					font-size: 15px;
+				}
+			}
+
+			&.like .thumbrating, &.thumbs .thumbrating {
+				margin: 0;
+			}
+		}
 	}
 
 	.wiki-content {
