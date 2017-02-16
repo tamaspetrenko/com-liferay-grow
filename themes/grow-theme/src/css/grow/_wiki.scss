@@ -159,7 +159,7 @@ $table-stripes-color: #f5f5f5;
 			border-bottom: groove;
 		}
 
-        tr:nth-child(even) {
+        tr:nth-child(odd) {
 			background-color: $table-stripes-color;
 			text-align: center;
         }
