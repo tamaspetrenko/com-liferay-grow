@@ -137,6 +137,17 @@
 			border-color: transparent;
 		}
 
+		tbody {
+			tr {
+				border-bottom: 1px solid;
+			}
+
+			tr:nth-child(odd) {
+				background-color: $table-stripes-color;
+				text-align: center;
+			}
+		}
+
 		td {
 			border: none;
 			padding: $table-cells-padding;
@@ -153,16 +164,13 @@
 
 		thead {
 			background:  transparent;
-			border-bottom: inset;
+			
+			tr {
+				border-bottom: 2px solid;
+			}
 		}
 
 		tr {
-			border-bottom: groove;
-			text-align: center;
-		}
-
-		tr:nth-child(odd) {
-			background-color: $table-stripes-color;
 			text-align: center;
 		}
 	}
