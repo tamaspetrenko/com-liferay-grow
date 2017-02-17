@@ -1507,12 +1507,14 @@ ul.post-desc li + li{
 /****************************breadcrumb***************************/
 .breadcrumb-wrap{
     padding: 30px 0;
-    background-image:url(../img/shadow-bg.png);
+    background-image:url(assan/images/shadow-bg.png);
     background-position: center center;
     background-repeat: no-repeat;
     background-color: #f6f6f6;
     border-top: 1px solid #d2d3d4;
     border-bottom: 1px solid #d2d3d4;
+    margin-left: -50px;
+    margin-right: -50px;
 }
 .breadcrumb-wrap h4{
     margin: 0px;
