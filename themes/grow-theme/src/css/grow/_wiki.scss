@@ -18,8 +18,10 @@
 		}
 	}
 
-	.attachments.row {
-		margin: 20px !important;
+	.attachments.content {
+		> a, > div {
+			margin-left: 15px;
+		}
 	}
 
 	.col-md-4.col-xs-12 {
