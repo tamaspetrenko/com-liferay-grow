@@ -361,7 +361,7 @@ pre{
     font-size: 12px;
 }
 
-.btn-theme-bg{
+.btn-primary{
     border-color: $skincolor;
     color: #fff;
     background-color: $skincolor;
@@ -369,15 +369,15 @@ pre{
 .btn i{
     margin-right: 10px;
 }
-.btn-theme-bg:hover{
+.btn-primary:hover{
     background-color: #333;
     border-color: #333 ;
 }
-.btn-theme-dark{
+.btn-primary-dark{
     background-color: #333;
     color:#fff;
 }
-.btn-theme-dark:hover{
+.btn-primary-dark:hover{
     color:#fff;
     background-color: $skincolor;
 }
