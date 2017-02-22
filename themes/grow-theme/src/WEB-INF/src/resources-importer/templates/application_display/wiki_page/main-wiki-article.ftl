@@ -1,4 +1,6 @@
-﻿<script type="text/javascript">
+﻿Up to date with the fix for OWXP-190 and OWXP-229 as of February 22, 2017
+
+<script type="text/javascript">
 	$(function () {
 		$('[data-toggle="tooltip"]').tooltip()
 	});
@@ -65,6 +67,15 @@
 							<@displayCategory
 								 category=category
 							 />
+						</#list>
+					</li>
+				</#if>
+				<#if tags?has_content>
+					<li><span class="glyphicon glyphicon-tag"></span>
+						<#list tags as tag>
+							<@displayTag
+					    		tag=tag
+							/>
 						</#list>
 					</li>
 				</#if>
