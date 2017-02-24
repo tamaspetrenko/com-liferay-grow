@@ -16,3 +16,15 @@ Instructions:
     "pluginName": "grow-theme"
   }
 } 
+
+Release Notes:
+
+- 1.6
+
+- 1.6.1
+
+- OWXP-226 Bold texts doesn't work with new grow Theme 				https://issues.liferay.com/browse/OWXP-226
+- OWXP-229 Add the permalink to page titles and a function button	https://issues.liferay.com/browse/OWXP-229
+- OWXP-236 Add tags to wiki pages 									https://issues.liferay.com/browse/OWXP-236 
+- OWXP-237 Create custom GROW favicon								https://issues.liferay.com/browse/OWXP-237
+- OWXP-238 Customize the HTML title of Grow 						https://issues.liferay.com/browse/OWXP-238
