@@ -131,6 +131,32 @@
 			margin: 15px 0 25px 0;
 		}
 
+		a {
+				color: $skincolor;
+		}
+
+		a:hover, a:focus {
+				color: $graycolor;
+		}
+
+		h2, h3, h4, h5 {
+
+			a {
+				color: #060606
+			}
+		}
+
+		.wiki-actions, h6 {
+			a {
+				color: $darkcolor;
+			}
+
+			.btn:hover, .btn:focus {
+				color: $lightcolor
+			}
+		}
+
+
 		h4.text-default {
 			margin-left: 0
 		}
