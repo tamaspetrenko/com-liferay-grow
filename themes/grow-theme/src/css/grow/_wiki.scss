@@ -122,6 +122,8 @@
 		  	}
 	
 			.wiki-content {
+				overflow: auto;
+
 				a {
 						color: $skincolor;
 				}
