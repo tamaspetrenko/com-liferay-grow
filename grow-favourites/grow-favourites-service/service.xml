@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.1.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_1_0.dtd">
+
+<service-builder auto-namespace-tables="true" package-path="com.grow.favourites">
+	<author>NorbertNemeth</author>
+	<namespace>FavouritesList</namespace>
+	<entity name="Favourite" local-service="true" uuid="true">
+
+		<!-- PK fields -->
+
+		<column name="favouriteId" primary="true" type="long" />
+
+		<!-- Audit fields -->
+		<column name="assetEntryId" type="long" />
+		<column name="companyId" type="long" />
+		<column name="groupId" type="long" />
+		<column name="addedDate" type="Date" />
+		<column name="userId" type="long" />
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="addedDate" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="A" return-type="Collection">
+			<finder-column name="assetEntryId" />
+		</finder>
+
+		<finder name="U" return-type="Collection">
+			<finder-column name="userId" />
+		</finder>
+
+		<finder name="G_U" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column name="userId" />
+		</finder>
+
+		<finder name="G_A_U" return-type="Favourite">
+			<finder-column name="groupId" />
+			<finder-column name="assetEntryId" />
+			<finder-column name="userId" />
+		</finder>
+
+		<finder name="G" return-type="Collection">
+			<finder-column name="groupId" />
+		</finder>
+	</entity>
+</service-builder>

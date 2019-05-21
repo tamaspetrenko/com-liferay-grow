@@ -1,0 +1,10 @@
+Bundle-Name: GrowFavourites-api
+Bundle-SymbolicName: com.grow.favourites.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.grow.favourites.exception,\
+	com.grow.favourites.model,\
+	com.grow.favourites.service,\
+	com.grow.favourites.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../GrowFavourites-service/service.xml

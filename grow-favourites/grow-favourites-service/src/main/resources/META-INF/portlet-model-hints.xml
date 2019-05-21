@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.grow.favourites.model.Favourite">
+		<field name="uuid" type="String" />
+		<field name="favouriteId" type="long" />
+		<field name="assetEntryId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="addedDate" type="Date" />
+		<field name="userId" type="long" />
+	</model>
+</model-hints>
