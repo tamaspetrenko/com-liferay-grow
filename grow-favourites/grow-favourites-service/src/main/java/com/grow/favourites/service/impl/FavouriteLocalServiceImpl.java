@@ -15,16 +15,24 @@
 package com.grow.favourites.service.impl;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
+
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+
 import java.util.ArrayList;
 import com.grow.favourites.model.Favourite;
 import com.grow.favourites.service.persistence.FavouritePersistence;
+import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 
 import com.liferay.portal.kernel.model.User;
-
+import com.grow.favourites.service.FavouriteLocalService;
 import com.grow.favourites.service.base.FavouriteLocalServiceBaseImpl;
 import com.liferay.portal.kernel.service.UserLocalService;
+import com.liferay.portal.kernel.service.UserLocalServiceUtil;
+import com.liferay.portal.kernel.util.DateUtil;
 import com.liferay.portal.spring.extender.service.ServiceReference;
 
 /**
@@ -41,6 +49,7 @@ import com.liferay.portal.spring.extender.service.ServiceReference;
  * @see FavouriteLocalServiceBaseImpl
  * @see com.grow.favourites.service.FavouriteLocalServiceUtil
  */
+@Component(service=FavouriteLocalService.class)
 public class FavouriteLocalServiceImpl extends FavouriteLocalServiceBaseImpl {
 	/*
 	 * NOTE FOR DEVELOPERS:
@@ -60,6 +69,7 @@ public class FavouriteLocalServiceImpl extends FavouriteLocalServiceBaseImpl {
 		favourite.setGroupId(groupId);
 		favourite.setCompanyId(user.getCompanyId());
 		favourite.setUserId(userId);
+		favourite.setAddedDate(new Date());
 		favourite.setAssetEntryId(assetEntryId);
 	
 		favouritePersistence.update(favourite);
@@ -102,7 +112,7 @@ public class FavouriteLocalServiceImpl extends FavouriteLocalServiceBaseImpl {
 
 	   List<Favourite> favourites = favouritePersistence.findByA(assetEntryId);
 
-	   List<User> users = new ArrayList(favourites.size());
+	   List<User> users = new ArrayList<User>(favourites.size());
 
 	   for (Favourite favourite : favourites) {
 		   users.add(userLocalService.getUserById(favourite.getUserId()));
@@ -114,20 +124,19 @@ public class FavouriteLocalServiceImpl extends FavouriteLocalServiceBaseImpl {
 	public Favourite getMostFavourites(
         long groupId)
     throws PortalException {
-	   //TO-DO
+	   //TODO
 	   return null;
 	}
 
 	public Favourite getLeastFavourites(
         long groupId)
     throws PortalException {
-	   //TO-DO
+	   //TODO
 	   return null;
 	}
 
-	@ServiceReference(type = FavouritePersistence.class)
-	protected FavouritePersistence favouritePersistence;
-
-	@ServiceReference(type = UserLocalService.class)
-	protected UserLocalService userLocalService;
+	public boolean isFavourite(long groupId, long userId, long assetEntryId) {
+		return favouritePersistence.fetchByG_A_U(groupId, assetEntryId, userId) != null;
+	}
+	
 }
