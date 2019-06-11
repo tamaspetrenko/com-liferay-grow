@@ -52,7 +52,6 @@
 </#if>
 
 <div class="row grow-wiki-body">
-	<div id="grow-wiki-entry-id" class="hidden">${entryId}</div>
 	<div id="wiki-content-main" class="col-md-9 px-3">
 		<div class="wiki-inner">
 		
@@ -71,16 +70,15 @@
 								<path class="lexicon-icon-outline" d="M105.882 499.619c-0.056 0-0.085 0-0.141 0-25.552-0.029-49.606-10.005-67.696-28.096-37.367-37.366-37.423-98.109-0.142-135.391l122.587-122.587c37.367-37.367 98.166-37.339 135.504 0.029 9.666 9.666 9.666 25.326 0 34.964-9.666 9.666-25.326 9.666-34.964 0-18.090-18.090-47.486-18.090-65.576-0.029l-122.587 122.587c-18.005 18.005-17.92 47.344 0.141 65.435 8.762 8.762 20.408 13.596 32.788 13.623 0.028 0 0.056 0 0.085 0 12.323 0 23.885-4.777 32.59-13.483l100.257-100.257c9.667-9.666 25.326-9.666 34.965 0 9.666 9.666 9.666 25.326 0 34.964l-100.257 100.257c-18.034 18.062-42.002 27.983-67.555 27.983z"></path>
 							</svg>
 						</button>
+						<button id="childrenButton" class="btn btn-outline-secondary btn-outline-borderless button-children" type="button" title="Child pages">
+							<svg class="lexicon-icon pages-tree lexicon-pages-tree"  focusable="false" role="presentation" viewBox="0 0 512 512">
+								<path class="lexicon-icon-outline pages-tree-tree" d="M161.5,288h126c0,17.6,14.4,32,32,32h64c17.8,0,32-14.4,32-32v-64c0-17.8-14.4-32-32-32h-64c-17.8,0-32,14.4-32,32v32h-126V128h32c17.8,0,32-14.4,32-32V32c0-17.8-14.4-32-32-32h-64c-17.8,0-32,14.4-32,32v64c0,17.6,14.4,32,32,32v352h158c0,17.6,14.4,32,32,32h64c17.8,0,32-14.4,32-32v-64c0-17.8-14.4-32-32-32h-64c-17.8,0-32,14.4-32,32v32h-126V288z"></path>
+							</svg>
+						</button>
 						<button id="detailsButton" class="btn btn-outline-secondary btn-outline-borderless button-details" type="button" title="Details">
 							<svg class="lexicon-icon info-circle lexicon-icon-info-circle"  focusable="false" role="presentation" viewBox="0 0 512 512">
 								<path class="lexicon-icon-outline" d="M437,75C388.7,26.6,324.4,0,256,0C187.6,0,123.3,26.6,75,75C26.6,123.3,0,187.6,0,256c0,68.4,26.6,132.7,75,181  c48.4,48.4,112.6,75,181,75c68.4,0,132.7-26.6,181-75c48.4-48.4,75-112.6,75-181C512,187.6,485.4,123.3,437,75z M288,384  c0,17.7-14.3,32-32,32c-17.7,0-32-14.3-32-32V224c0-17.7,14.3-32,32-32c17.7,0,32,14.3,32,32V384z M256,160c-17.7,0-32-14.3-32-32  c0-17.7,14.3-32,32-32s32,14.3,32,32C288,145.7,273.7,160,256,160z"></path>
 							</svg>
-						</button>
-						<button id="pageSubscription" class="btn btn-outline-secondary btn-outline-borderless button-details" type="button" title="Subscribe/Unsubscribe">
-							<@displayPageSubscription/>
-						</button>
-						<button id="addPageButton" class="btn btn-outline-secondary btn-outline-borderless button-details" type="button" title="Add Child Page">
-							<@displayAddChildLink/>
 						</button>
 					</div>
 				</div>
@@ -114,6 +112,12 @@
 			<div class="wiki-footer-toolbar">
 				<div class="autofit-col">
 					<div class="autofit-section">
+						<button id="outdateButton" class="btn btn-outline-secondary btn-outline-borderless" type="button" title="Outdated">
+							<svg class="lexicon-icon flag-full lexicon-icon-flag-full"  focusable="false" role="presentation" viewBox="0 0 512 512">
+							<path class="lexicon-icon-body" d="M415,32H160c0-17.7-14.3-32-32-32S96,14.3,96,32v33v190.2V480c0,17.7,14.3,32,32,32s32-14.3,32-32V288h255  c18.2,0,33-14.8,33-33V65C448,46.8,433.2,32,415,32z"></path>
+							<path class="lexicon-icon-outline" d="M415,32H160c0-17.7-14.3-32-32-32S96,14.3,96,32v33v190.2V480c0,17.7,14.3,32,32,32s32-14.3,32-32V288h255  c18.2,0,33-14.8,33-33V65C448,46.8,433.2,32,415,32z M384,224H160V96h224V224L384,224z"></path>
+							</svg>
+						</button>
 						<button id="likeButton" class="btn btn-outline-secondary btn-outline-borderless" type="button" title="Like">
 							<svg class="lexicon-icon thumbs-up-liked lexicon-icon-thumbs-up" focusable="false" role="presentation" viewBox="0 0 512 512">
 								<path class="lexicon-icon-body" fill="none" d="M503.3,185.2c-4.5-8.3-13.4-19.1-30.5-23.1c-8.1-1.9-16.2-1.9-24.8-1.9L339.8,160c4-9.1,7.6-18.6,10.7-29.4
@@ -164,12 +168,6 @@
 				<div class="sbox a-content">
 					<ul class="list-unstyled">
 						<#if tags?has_content>
-							<#if official?has_content>
-								<li>
-									<span class="glyphicon glyphicon-check"></span> 
-									<@displayTag tagName="official"/>
-								</li>
-							</#if>
 							<li>
 								<#list tags as tag>
 									<#if !(tag.name?matches("official", "i"))>
@@ -192,21 +190,6 @@
 				</label>
 				<div class="sbox a-content">	
 					<ul class="list-unstyled">
-						<#if parentPage.title?has_content>				
-							<li><@displayParentPageURL name=parentPage.title /></li>
-						</#if>
-						<#if childPagesList?size != 0>
-							<#list childPagesList as childPage>
-								<#if childPage.title?has_content>	
-									<li><@displayPageURL name=childPage.title glyphicon="triangle-bottom"/></li>
-								</#if>
-							</#list>
-						</#if>
-						
-						<li class="loadmore pb10">
-							<!--<span class="glyphicon glyphicon-option-horizontal pr10"></span><a href="#" onclick="alert('load more');">load more</a>-->
-						</li>
-
 						<#if childPagesList?size != 0>
 							<#list childPagesList as childPage>
 								<#if childPage.title?has_content>	
@@ -216,45 +199,7 @@
 						</#if>						
 					</ul>
 				</div>
-			</nav>
-
-			
-			<nav class="a-items">
-				<input type="checkbox" name="contributors" id="contributors" class="activate hidden"/>
-				<label for="contributors" class="accordion-label">Contributors</label>
-				<div class="sbox a-content">
-					<ul class="list-unstyled">
-						<li>
-							<span class="glyphicon glyphicon-eye-open"></span> ${assetEntry.getViewCount()}
-						</li>
-						<li>
-							<table class="contributors-table">
-								<#if modifierUser?has_content>
-									<tr>	
-										<td><span class="glyphicon glyphicon-user"></span> Updated by <a href="${portal.getPortalURL(httpServletRequest) + pubFriendlyURL + "/" + modifierUser.getScreenName()}">${modifierUser.getFullName()}</a> </td>
-										<td class="last-td"><span class="glyphicon glyphicon-calendar"> </span> ${assetEntry.getModifiedDate()?date}</li>	
-									</tr>
-								</#if>
-								<#if creatorUser?has_content>
-									<tr>
-										<td><span class="glyphicon glyphicon-user"></span> Creator: <a href="${portal.getPortalURL(httpServletRequest) + pubFriendlyURL + "/" + creatorUser.userScreenName}">${creatorUser.userFullName}</a> (${creatorUser.count})</td>
-										<td class="last-td"><span class="glyphicon glyphicon-calendar"> </span> ${contributors.creator.date?date}</td>
-									</tr>
-								</#if>
-							</table>	
-						</li>
-						<#if contributorsList?size != 0>
-							<#list contributorsList as contributor>
-								<#if contributor?has_content>
-									<li><@displayContributorURL contributor /></li>
-								</#if>
-							</#list>
-						</#if>
-						<li><@displayPageActivities/></li>
-					</ul>			
-				</div>
-			</nav>
-
+			</nav>	
 			<#if entry.getAttachmentsFileEntriesCount() gt 0>
 				<nav class="a-items">
 					<input type="checkbox" name="attachments" id="attachments" class="activate hidden"/>
@@ -277,10 +222,6 @@
 		</div>
 	</div>
 </div>
-<div class="comments content">
-	<h4 class="text-default">Comments</h4>
-	<@displayComments/>
-</div>
 
 <#--   macros   -->
 
@@ -296,54 +237,6 @@ ${editPageURL.setParameter("mvcRenderCommandName", "/wiki/edit_page")}${editPage
 <#macro displayPageDetails>
 <#assign viewPageDetailsURL = renderResponse.createRenderURL() />
 ${viewPageDetailsURL.setParameter("mvcRenderCommandName", "/wiki/view_page_details")}${viewPageDetailsURL.setParameter("title", entry.getTitle()?trim)}${viewPageDetailsURL.setParameter("redirect", currentURL)}"${viewPageDetailsURL?string?trim}"
-</#macro>
-
-<#macro displayParentPageURL
-	name
->
-	<#assign wikiTitle = getNormalizedWikiName(name)>
-	<#assign tooltip = "false">
-	<#assign title = name>
-	<#assign tooltipMsg = name>
-	<#if title?length gt 37>
-		<#assign title = title[0..32] + "...">
-		<#assign tooltip = "true">
-	</#if>
-
-	<span class="glyphicon glyphicon-triangle-top"> </span> 
-	
-	<#if tooltip == "true">
-		<a href="${portalURL}${pageFriendlyURL}/${wikiTitle}" data-toggle="tooltip" data-placement="top" title="${tooltipMsg}" data-animation="true">${title}</a>
-	<#else>
-		<a href="${portalURL}${pageFriendlyURL}/${wikiTitle}">${title}</a>
-	</#if>
-</#macro>
-
-<#macro displayContributorURL
-    contributor
->
-	<span class="glyphicon glyphicon-user"></span> <a class="" data-animation="true" href="${portalURL}${pubFriendlyURL}/${contributor.userScreenName}"> ${contributor.userFullName} </a> (${contributor.count})
-</#macro>
-
-<#macro displayAddChildLink>
-	<#assign addPageURL = renderResponse.createRenderURL() />
-	${addPageURL.setParameter("mvcRenderCommandName", "/wiki/edit_page")}
-	${addPageURL.setParameter("redirect", currentURL)}
-	${addPageURL.setParameter("nodeId", entry.getNodeId()?string)}
-	${addPageURL.setParameter("title", "")}
-	${addPageURL.setParameter("editTitle", "1")}
-	${addPageURL.setParameter("parentTitle", entry.getTitle())}
-
-	<a href="${addPageURL?string}"><span class="glyphicon glyphicon-plus" data-toggle="tooltip" data-placement="right" title="Add Child page" data-animation="true"> </span></a>
-</#macro>
-
-<#macro displayPageActivities>
-	<#assign viewPageActivitiesURL = renderResponse.createRenderURL() />
-	${viewPageActivitiesURL.setParameter("mvcRenderCommandName", "/wiki/view_page_activities")}
-	${viewPageActivitiesURL.setParameter("title", entry.getTitle()?trim)}
-	${viewPageActivitiesURL.setParameter("redirect", currentURL)}
-
-	<span class="glyphicon glyphicon-list"></span> <a class="" href="${viewPageActivitiesURL?string?trim}">View history</a>
 </#macro>
 
 <#macro displayTag tagName>
@@ -377,19 +270,6 @@ ${viewPageDetailsURL.setParameter("mvcRenderCommandName", "/wiki/view_page_detai
 	<#else>
 		<a href="${portalURL}${pageFriendlyURL}/${wikiTitle}">${title}</a>
 	</#if>
-</#macro>
-
-<#macro displayComments>
-	<@liferay_ui["discussion"]
-		className=wikiPageClassName
-		classPK=entry.getResourcePrimKey()
-		formAction="/c/portal/comment/edit_discussion"
-		formName="fm2"
-		ratingsEnabled=wikiPortletInstanceOverriddenConfiguration.enableCommentRatings()
-		redirect=currentURL
-		subject=entry.getTitle()
-		userId=assetRenderer.getUserId()
-	/>
 </#macro>
 
 <#macro displayAttachmentAccordion>
@@ -459,34 +339,6 @@ ${viewPageDetailsURL.setParameter("mvcRenderCommandName", "/wiki/view_page_detai
 <script type="text/javascript">
 	$(document).ready(function () {
 		
-		window.groupId = Liferay.ThemeDisplay.getCompanyGroupId()
-		window.userId = Liferay.ThemeDisplay.getUserId();
-		window.portalUrl = Liferay.ThemeDisplay.getCDNBaseURL();
-		window.assetEntryId = document.getElementById('grow-wiki-entry-id').innerHTML
-		var isFavouriteAndLikedApi = portalUrl + "/o/favourites/isFavouriteAndLikedArray?groupId=" + window.groupId + "&userId=" + window.userId + "&assetEntryId=" + window.assetEntryId;
-		fetch(isFavouriteAndLikedApi)
-		.then(response => response.json())
-		.then(data => {
-			var favIcon = document.querySelector(".grow-wiki-body #favouriteButton");
-			var likeIcon = document.querySelector(".grow-wiki-body #likeButton");
-
-			if(data[window.assetEntryId][0].favourite) {
-				window.isFavourite = true;
-				favIcon.innerHTML= '<svg class="lexicon-icon lexicon-icon-star" viewBox="0 0 512 512"><path class="lexicon-icon-body" d="M508.753 190.647c-3.247-9.265-11.983-15.493-21.802-15.493h-150.106l-59.203-158.208c-3.378-9.027-12.010-14.992-21.644-14.992s-18.264 5.965-21.617 14.992l-59.203 158.208h-150.131c-9.819 0-18.555 6.202-21.802 15.493-3.247 9.265-0.264 19.558 7.417 25.682l120.966 96.234-55.534 162.88c-3.114 9.132-0.212 19.268 7.285 25.365 7.47 6.097 17.975 6.889 26.316 1.979l146.173-86.204 150.317 90.163c3.668 2.217 7.786 3.299 11.877 3.299 0.026 0 0.079 0 0.132 0 12.722-0.422 23.2-10.32 23.2-23.095 0-3.853-0.924-7.496-2.613-10.69l-58.252-163.83 120.807-96.103c7.68-6.097 10.663-16.417 7.417-25.682z"></path><path class="lexicon-icon-outline" d="M418.1,510.1c-4.1,0-8.2-1.1-11.9-3.3l-150.3-90.2l-146.2,86.2c-8.3,4.9-18.8,4.1-26.3-2s-10.4-16.2-7.3-25.4l55.5-162.9l-121-96.2C3,210.2,0,199.9,3.3,190.6s12-15.5,21.8-15.5h150.1l59.2-158.2c3.4-9,12-15,21.6-15s18.2,6,21.6,15l59.2,158.2H487c9.8,0,18.6,6.2,21.8,15.5c3.2,9.3,0.3,19.6-7.4,25.7l-120.8,96.1l58.3,163.9c1.7,3.2,2.6,6.8,2.6,10.7c0,12.7-10.3,23.1-23.1,23.1C418.2,510.1,418.1,510.1,418.1,510.1L418.1,510.1z M256,366.6c4.1,0,8.2,1.1,11.9,3.3L374.7,434l-43.3-121.7c-3.3-9.3-0.3-19.7,7.4-25.8l82-65.2h-100c-9.6,0-18.3-6-21.6-15L256,90.9l-43.2,115.4c-3.4,9-12,15-21.6,15h-100l82,65.2c7.6,6.1,10.6,16.3,7.5,25.5L140,431.3l104.3-61.5C247.9,367.7,251.9,366.6,256,366.6L256,366.6z"></path></svg>';
-			}
-			else {
-				window.isFavourite = false;
-				favIcon.innerHTML= '<svg class="lexicon-icon lexicon-icon-star-o" focusable="false" role="presentation" viewBox="0 0 512 512"> <path class="lexicon-icon-body" fill="none" d="M508.753 190.647c-3.247-9.265-11.983-15.493-21.802-15.493h-150.106l-59.203-158.208c-3.378-9.027-12.010-14.992-21.644-14.992s-18.264 5.965-21.617 14.992l-59.203 158.208h-150.131c-9.819 0-18.555 6.202-21.802 15.493-3.247 9.265-0.264 19.558 7.417 25.682l120.966 96.234-55.534 162.88c-3.114 9.132-0.212 19.268 7.285 25.365 7.47 6.097 17.975 6.889 26.316 1.979l146.173-86.204 150.317 90.163c3.668 2.217 7.786 3.299 11.877 3.299 0.026 0 0.079 0 0.132 0 12.722-0.422 23.2-10.32 23.2-23.095 0-3.853-0.924-7.496-2.613-10.69l-58.252-163.83 120.807-96.103c7.68-6.097 10.663-16.417 7.417-25.682z"></path> <path class="lexicon-icon-outline" d="M418.1,510.1c-4.1,0-8.2-1.1-11.9-3.3l-150.3-90.2l-146.2,86.2c-8.3,4.9-18.8,4.1-26.3-2s-10.4-16.2-7.3-25.4l55.5-162.9 l-121-96.2C3,210.2,0,199.9,3.3,190.6s12-15.5,21.8-15.5h150.1l59.2-158.2c3.4-9,12-15,21.6-15s18.2,6,21.6,15l59.2,158.2H487 c9.8,0,18.6,6.2,21.8,15.5c3.2,9.3,0.3,19.6-7.4,25.7l-120.8,96.1l58.3,163.9c1.7,3.2,2.6,6.8,2.6,10.7c0,12.7-10.3,23.1-23.1,23.1 C418.2,510.1,418.1,510.1,418.1,510.1L418.1,510.1z M256,366.6c4.1,0,8.2,1.1,11.9,3.3L374.7,434l-43.3-121.7 c-3.3-9.3-0.3-19.7,7.4-25.8l82-65.2h-100c-9.6,0-18.3-6-21.6-15L256,90.9l-43.2,115.4c-3.4,9-12,15-21.6,15h-100l82,65.2 c7.6,6.1,10.6,16.3,7.5,25.5L140,431.3l104.3-61.5C247.9,367.7,251.9,366.6,256,366.6L256,366.6z"></path></svg>';
-			}
-			if(data[window.assetEntryId][0].liked) {
-				window.isLiked = true;
-				likeIcon.innerHTML= '<svg class="lexicon-icon thumbs-up-liked" focusable="false" role="presentation" viewBox="0 0 512 512"> <path class="lexicon-icon-body" fill="none" d="M503.3,185.2c-4.5-8.3-13.4-19.1-30.5-23.1c-8.1-1.9-16.2-1.9-24.8-1.9L339.8,160c4-9.1,7.6-18.6,10.7-29.4 c14.7-40.9,13.3-77-4.1-102C333.5,10.2,313.1,0,288.9,0c-0.5,0-0.9,0-1.4,0l-0.2,0c-24,0.5-47.3,15.7-69.2,45.1 c-12.6,16.8-21.2,33.5-22.6,36.4L138.1,192H96v320l215.8,0c21.8,0,54-12.5,80-31.1c36.2-25.9,56.1-60.3,56.1-96.9v-36 c7.7-2.1,15.6-5.3,23.3-10.1c18.6-11.5,40.7-35,40.7-82C512,218,511.2,199.9,503.3,185.2z"></path> <path class="lexicon-icon-outline" d="M503.3,185.2c-4.5-8.3-13.4-19.1-30.5-23.1c-8.1-1.9-16.2-1.9-24.8-1.9L339.8,160c4-9.1,7.6-18.6,10.7-29.4 c14.7-40.9,13.3-77-4.1-102C333.5,10.2,313.1,0,288.9,0c-0.5,0-0.9,0-1.4,0l-0.2,0c-24,0.5-47.3,15.7-69.2,45.1 c-12.6,16.8-21.2,33.5-22.6,36.4L138.1,192H96v320l215.8,0c21.8,0,54-12.5,80-31.1c36.2-25.9,56.1-60.3,56.1-96.9v-36 c7.7-2.1,15.6-5.3,23.3-10.1c18.6-11.5,40.7-35,40.7-82C512,218,511.2,199.9,503.3,185.2z M418.1,288c-0.6,0-1,0-1.4,0l-32.6-0.7 V384c0,19.4-15.5,34.8-28.6,44.3c-18.6,13.5-38.5,19.5-43.7,19.7H160V256h17l75.4-145.3l0.3-0.6c0.1-0.1,5.8-11.7,14.6-24 c11.3-15.8,19.4-21.2,21.9-22.2c3.8,0.1,4.4,1,4.7,1.3c3.3,4.7,4.9,20.4-4,44.5l-0.5,1.3l-0.4,1.3c-4.5,16.5-11.3,29.5-20.6,47.4 c-2.9,5.6-5.9,11.3-9.1,17.8L236.1,224l211.3,0.1c0.6,10.1,0.6,24.4,0.6,31.9C448,275.2,442.9,288,418.1,288z"></path> <path class="lexicon-icon-outline" d="M32,192c-17.7,0-32,14.3-32,32v256c0,17.7,14.3,32,32,32s32-14.3,32-32V224C64,206.3,49.7,192,32,192z"></path> </svg>';
-			}
-			else {
-				window.isLiked = false;
-				likeIcon.innerHTML= '<svg class="lexicon-icon thumbs-up" focusable="false" role="presentation" viewBox="0 0 512 512"> <path class="lexicon-icon-body" fill="none" d="M503.3,185.2c-4.5-8.3-13.4-19.1-30.5-23.1c-8.1-1.9-16.2-1.9-24.8-1.9L339.8,160c4-9.1,7.6-18.6,10.7-29.4 c14.7-40.9,13.3-77-4.1-102C333.5,10.2,313.1,0,288.9,0c-0.5,0-0.9,0-1.4,0l-0.2,0c-24,0.5-47.3,15.7-69.2,45.1 c-12.6,16.8-21.2,33.5-22.6,36.4L138.1,192H96v320l215.8,0c21.8,0,54-12.5,80-31.1c36.2-25.9,56.1-60.3,56.1-96.9v-36 c7.7-2.1,15.6-5.3,23.3-10.1c18.6-11.5,40.7-35,40.7-82C512,218,511.2,199.9,503.3,185.2z"></path> <path class="lexicon-icon-outline" d="M503.3,185.2c-4.5-8.3-13.4-19.1-30.5-23.1c-8.1-1.9-16.2-1.9-24.8-1.9L339.8,160c4-9.1,7.6-18.6,10.7-29.4 c14.7-40.9,13.3-77-4.1-102C333.5,10.2,313.1,0,288.9,0c-0.5,0-0.9,0-1.4,0l-0.2,0c-24,0.5-47.3,15.7-69.2,45.1 c-12.6,16.8-21.2,33.5-22.6,36.4L138.1,192H96v320l215.8,0c21.8,0,54-12.5,80-31.1c36.2-25.9,56.1-60.3,56.1-96.9v-36 c7.7-2.1,15.6-5.3,23.3-10.1c18.6-11.5,40.7-35,40.7-82C512,218,511.2,199.9,503.3,185.2z M418.1,288c-0.6,0-1,0-1.4,0l-32.6-0.7 V384c0,19.4-15.5,34.8-28.6,44.3c-18.6,13.5-38.5,19.5-43.7,19.7H160V256h17l75.4-145.3l0.3-0.6c0.1-0.1,5.8-11.7,14.6-24 c11.3-15.8,19.4-21.2,21.9-22.2c3.8,0.1,4.4,1,4.7,1.3c3.3,4.7,4.9,20.4-4,44.5l-0.5,1.3l-0.4,1.3c-4.5,16.5-11.3,29.5-20.6,47.4 c-2.9,5.6-5.9,11.3-9.1,17.8L236.1,224l211.3,0.1c0.6,10.1,0.6,24.4,0.6,31.9C448,275.2,442.9,288,418.1,288z"></path> <path class="lexicon-icon-outline" d="M32,192c-17.7,0-32,14.3-32,32v256c0,17.7,14.3,32,32,32s32-14.3,32-32V224C64,206.3,49.7,192,32,192z"></path> </svg>';
-			}
-		})
 		/*Header buttons*/
 		
 		document.querySelector(".grow-wiki-body #editButton").addEventListener('click', function(event){ 
@@ -497,97 +349,26 @@ ${viewPageDetailsURL.setParameter("mvcRenderCommandName", "/wiki/view_page_detai
 			window.location.href=<@displayFriendlyURL name=entry.getTitle() />;
 		});
 		
+		document.querySelector(".grow-wiki-body #childrenButton").addEventListener('click', function(event){ 
+		
+		});
+		
 		document.querySelector(".grow-wiki-body #detailsButton").addEventListener('click', function(event){ 
 			window.location.href=<@displayPageDetails />;
 		});
 		
 		/*Footer buttons*/
 		
-		document.querySelector(".grow-wiki-body #likeButton").addEventListener('click', function(event){
+		document.querySelector(".grow-wiki-body #outdateButton").addEventListener('click', function(event){ 
 
-			if (window.isLiked) {
-				var api = window.portalUrl + "/o/favourites/removeAssetLike?assetEntryId=" + window.assetEntryId + "&userId=" + window.userId;
+		});
+		
+		document.querySelector(".grow-wiki-body #likeButton").addEventListener('click', function(event){ 
 
-				var body ={
-						method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
-						mode: 'cors', // no-cors, cors, *same-origin
-						credentials: 'same-origin', // include, *same-origin, omit
-						headers: {
-							'Content-Type': 'application/json',
-						},
-						redirect: 'follow', // manual, *follow, error
-						referrer: 'no-referrer', // no-referrer, *clie
-					};
-				
-				fetch(api, body)
-				.then(response => {
-					var favIcon = document.querySelector(".grow-wiki-body #likeButton");
-					window.isLiked = false;
-					favIcon.innerHTML= '<svg class="lexicon-icon thumbs-up" focusable="false" role="presentation" viewBox="0 0 512 512"> <path class="lexicon-icon-body" fill="none" d="M503.3,185.2c-4.5-8.3-13.4-19.1-30.5-23.1c-8.1-1.9-16.2-1.9-24.8-1.9L339.8,160c4-9.1,7.6-18.6,10.7-29.4 c14.7-40.9,13.3-77-4.1-102C333.5,10.2,313.1,0,288.9,0c-0.5,0-0.9,0-1.4,0l-0.2,0c-24,0.5-47.3,15.7-69.2,45.1 c-12.6,16.8-21.2,33.5-22.6,36.4L138.1,192H96v320l215.8,0c21.8,0,54-12.5,80-31.1c36.2-25.9,56.1-60.3,56.1-96.9v-36 c7.7-2.1,15.6-5.3,23.3-10.1c18.6-11.5,40.7-35,40.7-82C512,218,511.2,199.9,503.3,185.2z"></path> <path class="lexicon-icon-outline" d="M503.3,185.2c-4.5-8.3-13.4-19.1-30.5-23.1c-8.1-1.9-16.2-1.9-24.8-1.9L339.8,160c4-9.1,7.6-18.6,10.7-29.4 c14.7-40.9,13.3-77-4.1-102C333.5,10.2,313.1,0,288.9,0c-0.5,0-0.9,0-1.4,0l-0.2,0c-24,0.5-47.3,15.7-69.2,45.1 c-12.6,16.8-21.2,33.5-22.6,36.4L138.1,192H96v320l215.8,0c21.8,0,54-12.5,80-31.1c36.2-25.9,56.1-60.3,56.1-96.9v-36 c7.7-2.1,15.6-5.3,23.3-10.1c18.6-11.5,40.7-35,40.7-82C512,218,511.2,199.9,503.3,185.2z M418.1,288c-0.6,0-1,0-1.4,0l-32.6-0.7 V384c0,19.4-15.5,34.8-28.6,44.3c-18.6,13.5-38.5,19.5-43.7,19.7H160V256h17l75.4-145.3l0.3-0.6c0.1-0.1,5.8-11.7,14.6-24 c11.3-15.8,19.4-21.2,21.9-22.2c3.8,0.1,4.4,1,4.7,1.3c3.3,4.7,4.9,20.4-4,44.5l-0.5,1.3l-0.4,1.3c-4.5,16.5-11.3,29.5-20.6,47.4 c-2.9,5.6-5.9,11.3-9.1,17.8L236.1,224l211.3,0.1c0.6,10.1,0.6,24.4,0.6,31.9C448,275.2,442.9,288,418.1,288z"></path> <path class="lexicon-icon-outline" d="M32,192c-17.7,0-32,14.3-32,32v256c0,17.7,14.3,32,32,32s32-14.3,32-32V224C64,206.3,49.7,192,32,192z"></path> </svg>';				})
-			}
-			else {
-				var api = window.portalUrl + "/o/favourites/addAssetLike?assetEntryId=" + window.assetEntryId + "&rank=1&userId=" + window.userId;
-				var body ={
-						method: 'PUT', // *GET, POST, PUT, DELETE, etc.
-						mode: 'cors', // no-cors, cors, *same-origin
-						credentials: 'same-origin', // include, *same-origin, omit
-						headers: {
-							'Content-Type': 'application/json',
-						},
-						redirect: 'follow', // manual, *follow, error
-						referrer: 'no-referrer', // no-referrer, *clie
-					};
-
-				fetch(api, body)
-				.then(response => {
-					var favIcon = document.querySelector(".grow-wiki-body #likeButton");
-					window.isLiked = true;
-					favIcon.innerHTML= '<svg class="lexicon-icon thumbs-up-liked" focusable="false" role="presentation" viewBox="0 0 512 512"> <path class="lexicon-icon-body" fill="none" d="M503.3,185.2c-4.5-8.3-13.4-19.1-30.5-23.1c-8.1-1.9-16.2-1.9-24.8-1.9L339.8,160c4-9.1,7.6-18.6,10.7-29.4 c14.7-40.9,13.3-77-4.1-102C333.5,10.2,313.1,0,288.9,0c-0.5,0-0.9,0-1.4,0l-0.2,0c-24,0.5-47.3,15.7-69.2,45.1 c-12.6,16.8-21.2,33.5-22.6,36.4L138.1,192H96v320l215.8,0c21.8,0,54-12.5,80-31.1c36.2-25.9,56.1-60.3,56.1-96.9v-36 c7.7-2.1,15.6-5.3,23.3-10.1c18.6-11.5,40.7-35,40.7-82C512,218,511.2,199.9,503.3,185.2z"></path> <path class="lexicon-icon-outline" d="M503.3,185.2c-4.5-8.3-13.4-19.1-30.5-23.1c-8.1-1.9-16.2-1.9-24.8-1.9L339.8,160c4-9.1,7.6-18.6,10.7-29.4 c14.7-40.9,13.3-77-4.1-102C333.5,10.2,313.1,0,288.9,0c-0.5,0-0.9,0-1.4,0l-0.2,0c-24,0.5-47.3,15.7-69.2,45.1 c-12.6,16.8-21.2,33.5-22.6,36.4L138.1,192H96v320l215.8,0c21.8,0,54-12.5,80-31.1c36.2-25.9,56.1-60.3,56.1-96.9v-36 c7.7-2.1,15.6-5.3,23.3-10.1c18.6-11.5,40.7-35,40.7-82C512,218,511.2,199.9,503.3,185.2z M418.1,288c-0.6,0-1,0-1.4,0l-32.6-0.7 V384c0,19.4-15.5,34.8-28.6,44.3c-18.6,13.5-38.5,19.5-43.7,19.7H160V256h17l75.4-145.3l0.3-0.6c0.1-0.1,5.8-11.7,14.6-24 c11.3-15.8,19.4-21.2,21.9-22.2c3.8,0.1,4.4,1,4.7,1.3c3.3,4.7,4.9,20.4-4,44.5l-0.5,1.3l-0.4,1.3c-4.5,16.5-11.3,29.5-20.6,47.4 c-2.9,5.6-5.9,11.3-9.1,17.8L236.1,224l211.3,0.1c0.6,10.1,0.6,24.4,0.6,31.9C448,275.2,442.9,288,418.1,288z"></path> <path class="lexicon-icon-outline" d="M32,192c-17.7,0-32,14.3-32,32v256c0,17.7,14.3,32,32,32s32-14.3,32-32V224C64,206.3,49.7,192,32,192z"></path> </svg>';
-				})
-			}
 		});
 		
 		document.querySelector(".grow-wiki-body #favouriteButton").addEventListener('click', function(event){ 
-			debugger;
 
-			if (window.isFavourite) {
-				var api = window.portalUrl + "/o/favourites/removeFavourite?groupId=" + window.groupId + "&userId=" + window.userId + "&assetEntryId=" + window.assetEntryId;
-				var body ={
-						method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
-						mode: 'cors', // no-cors, cors, *same-origin
-						credentials: 'same-origin', // include, *same-origin, omit
-						headers: {
-							'Content-Type': 'application/json',
-						},
-						redirect: 'follow', // manual, *follow, error
-						referrer: 'no-referrer', // no-referrer, *clie
-					};
-				fetch(api, body)
-				.then(response => {
-					var favIcon = document.querySelector(".grow-wiki-body #favouriteButton");
-					window.isFavourite = false;
-					favIcon.innerHTML= '<svg class="lexicon-icon lexicon-icon-star-o" focusable="false" role="presentation" viewBox="0 0 512 512"> <path class="lexicon-icon-body" fill="none" d="M508.753 190.647c-3.247-9.265-11.983-15.493-21.802-15.493h-150.106l-59.203-158.208c-3.378-9.027-12.010-14.992-21.644-14.992s-18.264 5.965-21.617 14.992l-59.203 158.208h-150.131c-9.819 0-18.555 6.202-21.802 15.493-3.247 9.265-0.264 19.558 7.417 25.682l120.966 96.234-55.534 162.88c-3.114 9.132-0.212 19.268 7.285 25.365 7.47 6.097 17.975 6.889 26.316 1.979l146.173-86.204 150.317 90.163c3.668 2.217 7.786 3.299 11.877 3.299 0.026 0 0.079 0 0.132 0 12.722-0.422 23.2-10.32 23.2-23.095 0-3.853-0.924-7.496-2.613-10.69l-58.252-163.83 120.807-96.103c7.68-6.097 10.663-16.417 7.417-25.682z"></path> <path class="lexicon-icon-outline" d="M418.1,510.1c-4.1,0-8.2-1.1-11.9-3.3l-150.3-90.2l-146.2,86.2c-8.3,4.9-18.8,4.1-26.3-2s-10.4-16.2-7.3-25.4l55.5-162.9 l-121-96.2C3,210.2,0,199.9,3.3,190.6s12-15.5,21.8-15.5h150.1l59.2-158.2c3.4-9,12-15,21.6-15s18.2,6,21.6,15l59.2,158.2H487 c9.8,0,18.6,6.2,21.8,15.5c3.2,9.3,0.3,19.6-7.4,25.7l-120.8,96.1l58.3,163.9c1.7,3.2,2.6,6.8,2.6,10.7c0,12.7-10.3,23.1-23.1,23.1 C418.2,510.1,418.1,510.1,418.1,510.1L418.1,510.1z M256,366.6c4.1,0,8.2,1.1,11.9,3.3L374.7,434l-43.3-121.7 c-3.3-9.3-0.3-19.7,7.4-25.8l82-65.2h-100c-9.6,0-18.3-6-21.6-15L256,90.9l-43.2,115.4c-3.4,9-12,15-21.6,15h-100l82,65.2 c7.6,6.1,10.6,16.3,7.5,25.5L140,431.3l104.3-61.5C247.9,367.7,251.9,366.6,256,366.6L256,366.6z"></path></svg>';
-				})
-			}
-			else {
-				var api = window.portalUrl + "/o/favourites/addFavourite?groupId=" + window.groupId + "&userId=" + window.userId + "&assetEntryId=" + window.assetEntryId;
-				var body ={
-						method: 'PUT', // *GET, POST, PUT, DELETE, etc.
-						mode: 'cors', // no-cors, cors, *same-origin
-						credentials: 'same-origin', // include, *same-origin, omit
-						headers: {
-							'Content-Type': 'application/json',
-						},
-						redirect: 'follow', // manual, *follow, error
-						referrer: 'no-referrer', // no-referrer, *clie
-					};
-				fetch(api, body)
-				.then(response => {
-					var favIcon = document.querySelector(".grow-wiki-body #favouriteButton");
-					window.isFavourite = true;
-					favIcon.innerHTML= '<svg class="lexicon-icon lexicon-icon-star" viewBox="0 0 512 512"><path class="lexicon-icon-body" d="M508.753 190.647c-3.247-9.265-11.983-15.493-21.802-15.493h-150.106l-59.203-158.208c-3.378-9.027-12.010-14.992-21.644-14.992s-18.264 5.965-21.617 14.992l-59.203 158.208h-150.131c-9.819 0-18.555 6.202-21.802 15.493-3.247 9.265-0.264 19.558 7.417 25.682l120.966 96.234-55.534 162.88c-3.114 9.132-0.212 19.268 7.285 25.365 7.47 6.097 17.975 6.889 26.316 1.979l146.173-86.204 150.317 90.163c3.668 2.217 7.786 3.299 11.877 3.299 0.026 0 0.079 0 0.132 0 12.722-0.422 23.2-10.32 23.2-23.095 0-3.853-0.924-7.496-2.613-10.69l-58.252-163.83 120.807-96.103c7.68-6.097 10.663-16.417 7.417-25.682z"></path><path class="lexicon-icon-outline" d="M418.1,510.1c-4.1,0-8.2-1.1-11.9-3.3l-150.3-90.2l-146.2,86.2c-8.3,4.9-18.8,4.1-26.3-2s-10.4-16.2-7.3-25.4l55.5-162.9l-121-96.2C3,210.2,0,199.9,3.3,190.6s12-15.5,21.8-15.5h150.1l59.2-158.2c3.4-9,12-15,21.6-15s18.2,6,21.6,15l59.2,158.2H487c9.8,0,18.6,6.2,21.8,15.5c3.2,9.3,0.3,19.6-7.4,25.7l-120.8,96.1l58.3,163.9c1.7,3.2,2.6,6.8,2.6,10.7c0,12.7-10.3,23.1-23.1,23.1C418.2,510.1,418.1,510.1,418.1,510.1L418.1,510.1z M256,366.6c4.1,0,8.2,1.1,11.9,3.3L374.7,434l-43.3-121.7c-3.3-9.3-0.3-19.7,7.4-25.8l82-65.2h-100c-9.6,0-18.3-6-21.6-15L256,90.9l-43.2,115.4c-3.4,9-12,15-21.6,15h-100l82,65.2c7.6,6.1,10.6,16.3,7.5,25.5L140,431.3l104.3-61.5C247.9,367.7,251.9,366.6,256,366.6L256,366.6z"></path></svg>';
-				})
-			}
 		});
 		
 	});
