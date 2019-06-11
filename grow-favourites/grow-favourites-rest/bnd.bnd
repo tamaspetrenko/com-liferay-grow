@@ -1,4 +1,4 @@
 Bundle-Name: GrowFavourites-rest
-Bundle-SymbolicName: com.grow.favourites.rest
+Bundle-SymbolicName: com.grow.favourites.rest.application
 Bundle-Version: 1.0.0
 Liferay-Configuration-Path: /configuration
