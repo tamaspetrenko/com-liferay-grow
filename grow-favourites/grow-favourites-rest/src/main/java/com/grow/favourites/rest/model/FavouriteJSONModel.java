@@ -63,11 +63,11 @@ public class FavouriteJSONModel {
 	}
 
 	@XmlElement
-	public String[] get_tagNames() {
+	public String[] getTagNames() {
 		return _tagNames;
 	}
 
-	public void set_tagNames(String[] _tagNames) {
+	public void setTagNames(String[] _tagNames) {
 		this._tagNames = _tagNames;
 	}
 
