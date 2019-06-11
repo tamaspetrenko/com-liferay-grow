@@ -290,6 +290,9 @@ public interface FavouriteLocalService extends BaseLocalService,
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<User> getUsers(long assetEntryId) throws PortalException;
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public boolean isFavourite(long groupId, long userId, long assetEntryId);
+
 	public void removeFavourite(long favouriteId) throws PortalException;
 
 	public void removeFavourite(long groupId, long assetEntryId, long userId)

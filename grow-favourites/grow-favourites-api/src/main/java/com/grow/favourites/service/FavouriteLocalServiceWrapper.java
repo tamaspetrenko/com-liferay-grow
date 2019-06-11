@@ -342,6 +342,11 @@ public class FavouriteLocalServiceWrapper implements FavouriteLocalService,
 	}
 
 	@Override
+	public boolean isFavourite(long groupId, long userId, long assetEntryId) {
+		return _favouriteLocalService.isFavourite(groupId, userId, assetEntryId);
+	}
+
+	@Override
 	public void removeFavourite(long favouriteId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		_favouriteLocalService.removeFavourite(favouriteId);

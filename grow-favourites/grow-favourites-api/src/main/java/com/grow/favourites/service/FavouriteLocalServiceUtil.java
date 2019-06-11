@@ -328,6 +328,11 @@ public class FavouriteLocalServiceUtil {
 		return getService().getUsers(assetEntryId);
 	}
 
+	public static boolean isFavourite(long groupId, long userId,
+		long assetEntryId) {
+		return getService().isFavourite(groupId, userId, assetEntryId);
+	}
+
 	public static void removeFavourite(long favouriteId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		getService().removeFavourite(favouriteId);
