@@ -56,9 +56,9 @@ public class FavouriteJSONModel {
 		return _articleCategory;
 	}
 
-	public void setArticleCategory(List<AssetCategory> categories) {
-		if (!categories.isEmpty()) {
-			this._articleCategory = categories.get(0).getName();
+	public void setArticleCategory(String categorie) {
+		if (!categorie.isEmpty()) {
+			this._articleCategory = categorie;
 		}
 	}
 

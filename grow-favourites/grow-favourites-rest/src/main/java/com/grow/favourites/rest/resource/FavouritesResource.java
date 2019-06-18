@@ -3,19 +3,6 @@
  */
 package com.grow.favourites.rest.resource;
 
-import com.grow.favourites.model.Favourite;
-import com.grow.favourites.rest.model.FavouriteJSONModel;
-import com.grow.favourites.service.FavouriteLocalServiceUtil;
-import com.liferay.asset.kernel.model.AssetEntry;
-import com.liferay.asset.kernel.model.AssetTag;
-import com.liferay.asset.kernel.service.AssetEntryLocalServiceUtil;
-import com.liferay.asset.kernel.service.AssetTagLocalServiceUtil;
-import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.kernel.model.User;
-import com.liferay.portal.kernel.model.UserConstants;
-import com.liferay.portal.kernel.service.UserLocalServiceUtil;
-import com.liferay.portal.kernel.util.PortalUtil;
-
 import java.text.DateFormat;
 import java.util.Collection;
 import java.util.List;
@@ -28,6 +15,22 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import com.grow.favourites.model.Favourite;
+import com.grow.favourites.rest.model.FavouriteJSONModel;
+import com.grow.favourites.service.FavouriteLocalServiceUtil;
+import com.liferay.asset.kernel.model.AssetEntry;
+import com.liferay.asset.kernel.model.AssetTag;
+import com.liferay.asset.kernel.service.AssetEntryLocalServiceUtil;
+import com.liferay.asset.kernel.service.AssetTagLocalServiceUtil;
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.model.User;
+import com.liferay.portal.kernel.model.UserConstants;
+import com.liferay.portal.kernel.service.UserLocalServiceUtil;
+import com.liferay.portal.kernel.util.PortalUtil;
+import com.liferay.wiki.model.WikiPage;
+import com.liferay.wiki.service.WikiPageLocalServiceUtil;
+import com.liferay.portal.kernel.util.Validator;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ServiceScope;
@@ -105,7 +108,7 @@ public class FavouritesResource {
 	public Response removeFavourite(
 		@QueryParam("groupId") long groupId,
 		@QueryParam("userId") long userId,
-		@QueryParam("asseEntryId") long assetEntryId) {
+		@QueryParam("assetEntryId") long assetEntryId) {
 
 		try {
 			FavouriteLocalServiceUtil.removeFavourite(groupId, assetEntryId, userId);
@@ -134,7 +137,26 @@ public class FavouritesResource {
 				if (asset == null) {
 					continue;
 				}
+				WikiPage wikiPage = WikiPageLocalServiceUtil.getPage(asset.getClassPK());
 
+				String parentTitle = wikiPage.getTitle();
+
+				if (!parentTitle.equals("Learn") && !parentTitle.equals("Share") && !parentTitle.equals("People") && !parentTitle.equals("Excellence")) {
+
+					parentTitle = wikiPage.getParentTitle();
+
+					while (Validator.isNotNull(parentTitle) && !parentTitle.equals("Learn") && !parentTitle.equals("Share") && !parentTitle.equals("People") && !parentTitle.equals("Excellence")) {
+
+						wikiPage = wikiPage.getParentPage();
+
+						parentTitle = wikiPage.getParentTitle();
+					}
+				}
+
+				if (!parentTitle.equals("Excellence") && !parentTitle.equals("Learn") && !parentTitle.equals("Share") && !parentTitle.equals("People")) {
+					parentTitle = "Share";
+				}
+				
 				favouritesArray[i] = new FavouriteJSONModel();
 
 				favouritesArray[i].setArticleAuthor(user.getFullName());
@@ -144,7 +166,7 @@ public class FavouritesResource {
 				favouritesArray[i].setCreateDate(
 					DateFormat.getDateInstance(DateFormat.MEDIUM).format(asset.getCreateDate()));
 				favouritesArray[i].setArticleTitle(asset.getTitle());
-				favouritesArray[i].setArticleCategory(asset.getCategories());
+				favouritesArray[i].setArticleCategory(parentTitle);
 				favouritesArray[i].setTagNames(getTags(asset));
 
 				i++;
@@ -168,6 +190,8 @@ public class FavouritesResource {
 
 		for (AssetTag tag : tags) {
 			tagNames[i] = tag.getName();
+
+			i++;
 		}
 
 		return tagNames;

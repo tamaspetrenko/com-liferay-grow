@@ -81,7 +81,7 @@ public class FavouriteLocalServiceImpl extends FavouriteLocalServiceBaseImpl {
         long groupId, long assetEntryId, long userId)
     throws PortalException {
 
-	   Favourite favourite = favouritePersistence.findByG_A_U(groupId, userId, assetEntryId);
+	   Favourite favourite = favouritePersistence.findByG_A_U(groupId, assetEntryId, userId);
 
 	   favouritePersistence.remove(favourite);
 	}
