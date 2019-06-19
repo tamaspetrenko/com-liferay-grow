@@ -131,8 +131,8 @@ public class FavouritesResource {
 			int i = 0;
 
 			for (Favourite favourite : favourites) {
-				User user = UserLocalServiceUtil.fetchUser(favourite.getUserId());
 				AssetEntry asset = AssetEntryLocalServiceUtil.fetchAssetEntry(favourite.getAssetEntryId());
+				User user = UserLocalServiceUtil.fetchUser(asset.getUserId());
 
 				if (asset == null) {
 					continue;
