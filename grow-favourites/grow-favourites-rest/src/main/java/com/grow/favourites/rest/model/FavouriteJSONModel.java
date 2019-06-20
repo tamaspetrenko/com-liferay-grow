@@ -63,6 +63,15 @@ public class FavouriteJSONModel {
 	}
 
 	@XmlElement
+	public Long getId() {
+		return _id;
+	}
+
+	public void setId(Long id) {
+		this._id = id;
+	}
+
+	@XmlElement
 	public String[] getTagNames() {
 		return _tagNames;
 	}
@@ -76,5 +85,6 @@ public class FavouriteJSONModel {
 	private String _createDate;
 	private String _articleTitle;
 	private String _articleCategory;
+	private Long _id;
 	private String[] _tagNames;
 }

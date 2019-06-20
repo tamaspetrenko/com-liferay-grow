@@ -167,6 +167,7 @@ public class FavouritesResource {
 					DateFormat.getDateInstance(DateFormat.MEDIUM).format(asset.getCreateDate()));
 				favouritesArray[i].setArticleTitle(asset.getTitle());
 				favouritesArray[i].setArticleCategory(parentTitle);
+				favouritesArray[i].setId(asset.getEntryId());
 				favouritesArray[i].setTagNames(getTags(asset));
 
 				i++;
