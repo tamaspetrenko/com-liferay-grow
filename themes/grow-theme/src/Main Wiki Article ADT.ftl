@@ -76,6 +76,9 @@
 								<path class="lexicon-icon-outline" d="M437,75C388.7,26.6,324.4,0,256,0C187.6,0,123.3,26.6,75,75C26.6,123.3,0,187.6,0,256c0,68.4,26.6,132.7,75,181  c48.4,48.4,112.6,75,181,75c68.4,0,132.7-26.6,181-75c48.4-48.4,75-112.6,75-181C512,187.6,485.4,123.3,437,75z M288,384  c0,17.7-14.3,32-32,32c-17.7,0-32-14.3-32-32V224c0-17.7,14.3-32,32-32c17.7,0,32,14.3,32,32V384z M256,160c-17.7,0-32-14.3-32-32  c0-17.7,14.3-32,32-32s32,14.3,32,32C288,145.7,273.7,160,256,160z"></path>
 							</svg>
 						</button>
+						<button id="pageSubscription" class="btn btn-outline-secondary btn-outline-borderless button-details" type="button" title="Subscribe/Unsubscribe">
+							<@displayPageSubscription/>
+						</button>
 						<button id="addPageButton" class="btn btn-outline-secondary btn-outline-borderless button-details" type="button" title="Add Child Page">
 							<@displayAddChildLink/>
 						</button>
@@ -420,6 +423,27 @@ ${viewPageDetailsURL.setParameter("mvcRenderCommandName", "/wiki/view_page_detai
 	</#list>
 </#macro>
 
+<#macro displayPageSubscription>
+	<#if isSubscribedPage>
+		<#assign unsubscribeURL = renderResponse.createActionURL()>
+		${unsubscribeURL.setParameter("javax.portlet.action", "/wiki/edit_page")}
+		${unsubscribeURL.setParameter("cmd", "unsubscribe")}
+		${unsubscribeURL.setParameter("redirect", currentURL)}
+		${unsubscribeURL.setParameter("nodeId", entry.getNodeId()?string)}
+		${unsubscribeURL.setParameter("title", entry.getTitle()?string)}
+
+		<a href="${unsubscribeURL?string}"><span class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="right" title="Unsubscribe" data-animation="true"> </span></a>
+	<#else>
+		<#assign subscribeURL = renderResponse.createActionURL()>
+		${subscribeURL.setParameter("javax.portlet.action", "/wiki/edit_page")}
+		${subscribeURL.setParameter("cmd", "subscribe")}
+		${subscribeURL.setParameter("redirect", currentURL)}
+		${subscribeURL.setParameter("nodeId", entry.getNodeId()?string)}
+		${subscribeURL.setParameter("title", entry.getTitle()?string)}
+
+		<a href="${subscribeURL?string}"><span class="glyphicon glyphicon-ok" data-toggle="tooltip" data-placement="right" title="Subscribe" data-animation="true"> </span></a>
+	</#if>
+</#macro>
 <#--   functions   -->
 
 <#function getNormalizedWikiName string>
