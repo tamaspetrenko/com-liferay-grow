@@ -71,15 +71,13 @@
 								<path class="lexicon-icon-outline" d="M105.882 499.619c-0.056 0-0.085 0-0.141 0-25.552-0.029-49.606-10.005-67.696-28.096-37.367-37.366-37.423-98.109-0.142-135.391l122.587-122.587c37.367-37.367 98.166-37.339 135.504 0.029 9.666 9.666 9.666 25.326 0 34.964-9.666 9.666-25.326 9.666-34.964 0-18.090-18.090-47.486-18.090-65.576-0.029l-122.587 122.587c-18.005 18.005-17.92 47.344 0.141 65.435 8.762 8.762 20.408 13.596 32.788 13.623 0.028 0 0.056 0 0.085 0 12.323 0 23.885-4.777 32.59-13.483l100.257-100.257c9.667-9.666 25.326-9.666 34.965 0 9.666 9.666 9.666 25.326 0 34.964l-100.257 100.257c-18.034 18.062-42.002 27.983-67.555 27.983z"></path>
 							</svg>
 						</button>
-						<button id="childrenButton" class="btn btn-outline-secondary btn-outline-borderless button-children" type="button" title="Child pages">
-							<svg class="lexicon-icon pages-tree lexicon-pages-tree"  focusable="false" role="presentation" viewBox="0 0 512 512">
-								<path class="lexicon-icon-outline pages-tree-tree" d="M161.5,288h126c0,17.6,14.4,32,32,32h64c17.8,0,32-14.4,32-32v-64c0-17.8-14.4-32-32-32h-64c-17.8,0-32,14.4-32,32v32h-126V128h32c17.8,0,32-14.4,32-32V32c0-17.8-14.4-32-32-32h-64c-17.8,0-32,14.4-32,32v64c0,17.6,14.4,32,32,32v352h158c0,17.6,14.4,32,32,32h64c17.8,0,32-14.4,32-32v-64c0-17.8-14.4-32-32-32h-64c-17.8,0-32,14.4-32,32v32h-126V288z"></path>
-							</svg>
-						</button>
 						<button id="detailsButton" class="btn btn-outline-secondary btn-outline-borderless button-details" type="button" title="Details">
 							<svg class="lexicon-icon info-circle lexicon-icon-info-circle"  focusable="false" role="presentation" viewBox="0 0 512 512">
 								<path class="lexicon-icon-outline" d="M437,75C388.7,26.6,324.4,0,256,0C187.6,0,123.3,26.6,75,75C26.6,123.3,0,187.6,0,256c0,68.4,26.6,132.7,75,181  c48.4,48.4,112.6,75,181,75c68.4,0,132.7-26.6,181-75c48.4-48.4,75-112.6,75-181C512,187.6,485.4,123.3,437,75z M288,384  c0,17.7-14.3,32-32,32c-17.7,0-32-14.3-32-32V224c0-17.7,14.3-32,32-32c17.7,0,32,14.3,32,32V384z M256,160c-17.7,0-32-14.3-32-32  c0-17.7,14.3-32,32-32s32,14.3,32,32C288,145.7,273.7,160,256,160z"></path>
 							</svg>
+						</button>
+						<button id="addPageButton" class="btn btn-outline-secondary btn-outline-borderless button-details" type="button" title="Add Child Page">
+							<@displayAddChildLink/>
 						</button>
 					</div>
 				</div>
@@ -113,12 +111,6 @@
 			<div class="wiki-footer-toolbar">
 				<div class="autofit-col">
 					<div class="autofit-section">
-						<button id="outdateButton" class="btn btn-outline-secondary btn-outline-borderless" type="button" title="Outdated">
-							<svg class="lexicon-icon flag-full lexicon-icon-flag-full"  focusable="false" role="presentation" viewBox="0 0 512 512">
-							<path class="lexicon-icon-body" d="M415,32H160c0-17.7-14.3-32-32-32S96,14.3,96,32v33v190.2V480c0,17.7,14.3,32,32,32s32-14.3,32-32V288h255  c18.2,0,33-14.8,33-33V65C448,46.8,433.2,32,415,32z"></path>
-							<path class="lexicon-icon-outline" d="M415,32H160c0-17.7-14.3-32-32-32S96,14.3,96,32v33v190.2V480c0,17.7,14.3,32,32,32s32-14.3,32-32V288h255  c18.2,0,33-14.8,33-33V65C448,46.8,433.2,32,415,32z M384,224H160V96h224V224L384,224z"></path>
-							</svg>
-						</button>
 						<button id="likeButton" class="btn btn-outline-secondary btn-outline-borderless" type="button" title="Like">
 							<svg class="lexicon-icon thumbs-up-liked lexicon-icon-thumbs-up" focusable="false" role="presentation" viewBox="0 0 512 512">
 								<path class="lexicon-icon-body" fill="none" d="M503.3,185.2c-4.5-8.3-13.4-19.1-30.5-23.1c-8.1-1.9-16.2-1.9-24.8-1.9L339.8,160c4-9.1,7.6-18.6,10.7-29.4
@@ -169,6 +161,12 @@
 				<div class="sbox a-content">
 					<ul class="list-unstyled">
 						<#if tags?has_content>
+							<#if official?has_content>
+								<li>
+									<span class="glyphicon glyphicon-check"></span> 
+									<@displayTag tagName="official"/>
+								</li>
+							</#if>
 							<li>
 								<#list tags as tag>
 									<#if !(tag.name?matches("official", "i"))>
@@ -191,6 +189,21 @@
 				</label>
 				<div class="sbox a-content">	
 					<ul class="list-unstyled">
+						<#if parentPage.title?has_content>				
+							<li><@displayParentPageURL name=parentPage.title /></li>
+						</#if>
+						<#if childPagesList?size != 0>
+							<#list childPagesList as childPage>
+								<#if childPage.title?has_content>	
+									<li><@displayPageURL name=childPage.title glyphicon="triangle-bottom"/></li>
+								</#if>
+							</#list>
+						</#if>
+						
+						<li class="loadmore pb10">
+							<!--<span class="glyphicon glyphicon-option-horizontal pr10"></span><a href="#" onclick="alert('load more');">load more</a>-->
+						</li>
+
 						<#if childPagesList?size != 0>
 							<#list childPagesList as childPage>
 								<#if childPage.title?has_content>	
@@ -200,7 +213,45 @@
 						</#if>						
 					</ul>
 				</div>
-			</nav>	
+			</nav>
+
+			
+			<nav class="a-items">
+				<input type="checkbox" name="contributors" id="contributors" class="activate hidden"/>
+				<label for="contributors" class="accordion-label">Contributors</label>
+				<div class="sbox a-content">
+					<ul class="list-unstyled">
+						<li>
+							<span class="glyphicon glyphicon-eye-open"></span> ${assetEntry.getViewCount()}
+						</li>
+						<li>
+							<table class="contributors-table">
+								<#if modifierUser?has_content>
+									<tr>	
+										<td><span class="glyphicon glyphicon-user"></span> Updated by <a href="${portal.getPortalURL(httpServletRequest) + pubFriendlyURL + "/" + modifierUser.getScreenName()}">${modifierUser.getFullName()}</a> </td>
+										<td class="last-td"><span class="glyphicon glyphicon-calendar"> </span> ${assetEntry.getModifiedDate()?date}</li>	
+									</tr>
+								</#if>
+								<#if creatorUser?has_content>
+									<tr>
+										<td><span class="glyphicon glyphicon-user"></span> Creator: <a href="${portal.getPortalURL(httpServletRequest) + pubFriendlyURL + "/" + creatorUser.userScreenName}">${creatorUser.userFullName}</a> (${creatorUser.count})</td>
+										<td class="last-td"><span class="glyphicon glyphicon-calendar"> </span> ${contributors.creator.date?date}</td>
+									</tr>
+								</#if>
+							</table>	
+						</li>
+						<#if contributorsList?size != 0>
+							<#list contributorsList as contributor>
+								<#if contributor?has_content>
+									<li><@displayContributorURL contributor /></li>
+								</#if>
+							</#list>
+						</#if>
+						<li><@displayPageActivities/></li>
+					</ul>			
+				</div>
+			</nav>
+
 			<#if entry.getAttachmentsFileEntriesCount() gt 0>
 				<nav class="a-items">
 					<input type="checkbox" name="attachments" id="attachments" class="activate hidden"/>
@@ -223,6 +274,10 @@
 		</div>
 	</div>
 </div>
+<div class="comments content">
+	<h4 class="text-default">Comments</h4>
+	<@displayComments/>
+</div>
 
 <#--   macros   -->
 
@@ -238,6 +293,48 @@ ${editPageURL.setParameter("mvcRenderCommandName", "/wiki/edit_page")}${editPage
 <#macro displayPageDetails>
 <#assign viewPageDetailsURL = renderResponse.createRenderURL() />
 ${viewPageDetailsURL.setParameter("mvcRenderCommandName", "/wiki/view_page_details")}${viewPageDetailsURL.setParameter("title", entry.getTitle()?trim)}${viewPageDetailsURL.setParameter("redirect", currentURL)}"${viewPageDetailsURL?string?trim}"
+</#macro>
+
+<#macro displayParentPageURL
+	name
+>
+	<#assign wikiTitle = getNormalizedWikiName(name)>
+	<#assign tooltip = "false">
+	<#assign title = name>
+	<#assign tooltipMsg = name>
+	<#if title?length gt 37>
+		<#assign title = title[0..32] + "...">
+		<#assign tooltip = "true">
+	</#if>
+
+	<span class="glyphicon glyphicon-triangle-top"> </span> 
+	
+	<#if tooltip == "true">
+		<a href="${portalURL}${pageFriendlyURL}/${wikiTitle}" data-toggle="tooltip" data-placement="top" title="${tooltipMsg}" data-animation="true">${title}</a>
+	<#else>
+		<a href="${portalURL}${pageFriendlyURL}/${wikiTitle}">${title}</a>
+	</#if>
+</#macro>
+
+<#macro displayAddChildLink>
+	<#assign addPageURL = renderResponse.createRenderURL() />
+	${addPageURL.setParameter("mvcRenderCommandName", "/wiki/edit_page")}
+	${addPageURL.setParameter("redirect", currentURL)}
+	${addPageURL.setParameter("nodeId", entry.getNodeId()?string)}
+	${addPageURL.setParameter("title", "")}
+	${addPageURL.setParameter("editTitle", "1")}
+	${addPageURL.setParameter("parentTitle", entry.getTitle())}
+
+	<a href="${addPageURL?string}"><span class="glyphicon glyphicon-plus" data-toggle="tooltip" data-placement="right" title="Add Child page" data-animation="true"> </span></a>
+</#macro>
+
+<#macro displayPageActivities>
+	<#assign viewPageActivitiesURL = renderResponse.createRenderURL() />
+	${viewPageActivitiesURL.setParameter("mvcRenderCommandName", "/wiki/view_page_activities")}
+	${viewPageActivitiesURL.setParameter("title", entry.getTitle()?trim)}
+	${viewPageActivitiesURL.setParameter("redirect", currentURL)}
+
+	<span class="glyphicon glyphicon-list"></span> <a class="" href="${viewPageActivitiesURL?string?trim}">View history</a>
 </#macro>
 
 <#macro displayTag tagName>
@@ -271,6 +368,19 @@ ${viewPageDetailsURL.setParameter("mvcRenderCommandName", "/wiki/view_page_detai
 	<#else>
 		<a href="${portalURL}${pageFriendlyURL}/${wikiTitle}">${title}</a>
 	</#if>
+</#macro>
+
+<#macro displayComments>
+	<@liferay_ui["discussion"]
+		className=wikiPageClassName
+		classPK=entry.getResourcePrimKey()
+		formAction="/c/portal/comment/edit_discussion"
+		formName="fm2"
+		ratingsEnabled=wikiPortletInstanceOverriddenConfiguration.enableCommentRatings()
+		redirect=currentURL
+		subject=entry.getTitle()
+		userId=assetRenderer.getUserId()
+	/>
 </#macro>
 
 <#macro displayAttachmentAccordion>
