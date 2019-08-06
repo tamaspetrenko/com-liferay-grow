@@ -453,7 +453,7 @@ ${viewPageDetailsURL.setParameter("mvcRenderCommandName", "/wiki/view_page_detai
 <#--   functions   -->
 
 <#function getNormalizedWikiName string>
-	<#return string?replace("á", "a")?replace("é","e")?replace("í","i")?replace("[ú|ü|ű]", "u", "r")?replace("[ó|ö|ő]", "o", "r")?replace("&", "<AMPERSAND>")?replace("'", "<APOSTROPHE>")?replace("@", "<AT>")?replace("]", "<CLOSE_BRACKET>,")?replace(")", "<CLOSE_PARENTHESIS>")?replace(":", "<COLON>")?replace(",", "<COMMA>")?replace("$", "<DOLLAR>")?replace("=", "<EQUAL>")?replace("!", "<EXCLAMATION>")?replace("[", "<OPEN_BRACKET>")?replace("(", "<OPEN_PARENTHESIS>")?replace("#", "<POUND>")?replace("?", "<QUESTION>")?replace(";", "<SEMICOLON>")?replace("/", "<SLASH>")?replace("*", "<STAR>")?replace("+","<PLUS>")?replace(" ","+")>
+	<#return string?replace("á", "a")?replace("é","e")?replace("í","i")?replace("[ú|ü|ű]", "u", "r")?replace("[ó|ö|ő]", "o", "r")?replace("&", "_AMPERSAND_")?replace("'", "_APOSTROPHE_")?replace("@", "_AT_")?replace("]", "_CLOSE_BRACKET_,")?replace(")", "_CLOSE_PARENTHESIS_")?replace(":", "_COLON_")?replace(",", "_COMMA_")?replace("$", "_DOLLAR_")?replace("=", "_EQUAL_")?replace("!", "_EXCLAMATION_")?replace("[", "_OPEN_BRACKET_")?replace("(", "_OPEN_PARENTHESIS_")?replace("#", "_POUND_")?replace("?", "_QUESTION_")?replace(";", "_SEMICOLON_")?replace("/", "_SLASH_")?replace("*", "_STAR_")?replace("+","_PLUS_")?replace(" ","+")>
 </#function>
 
 <script type="text/javascript">
