@@ -3,6 +3,10 @@
 	overflow: auto;
     overflow-wrap: break-word;
     word-wrap: break-word;
+	
+	img {
+		max-width: 100%;
+	}
 
 	@import "../../primer/primer-markdown/index";
 
