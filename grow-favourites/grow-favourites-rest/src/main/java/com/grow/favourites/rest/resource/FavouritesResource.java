@@ -4,8 +4,12 @@
 package com.grow.favourites.rest.resource;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.Random;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -19,15 +23,25 @@ import javax.ws.rs.core.Response;
 import com.grow.favourites.model.Favourite;
 import com.grow.favourites.rest.model.FavouriteJSONModel;
 import com.grow.favourites.service.FavouriteLocalServiceUtil;
+import com.liferay.asset.kernel.model.AssetCategory;
 import com.liferay.asset.kernel.model.AssetEntry;
 import com.liferay.asset.kernel.model.AssetTag;
+import com.liferay.asset.kernel.model.AssetRenderer;
 import com.liferay.asset.kernel.service.AssetEntryLocalServiceUtil;
 import com.liferay.asset.kernel.service.AssetTagLocalServiceUtil;
+import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
+import com.liferay.portal.kernel.dao.orm.DynamicQuery;
+import com.liferay.portal.kernel.dao.orm.RestrictionsFactoryUtil;
 import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.json.JSONArray;
+import com.liferay.portal.kernel.json.JSONFactoryUtil;
+import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.model.UserConstants;
 import com.liferay.portal.kernel.service.UserLocalServiceUtil;
 import com.liferay.portal.kernel.util.PortalUtil;
+import com.liferay.ratings.kernel.model.RatingsEntry;
+import com.liferay.ratings.kernel.service.RatingsEntryLocalServiceUtil;
 import com.liferay.wiki.model.WikiPage;
 import com.liferay.wiki.service.WikiPageLocalServiceUtil;
 import com.liferay.portal.kernel.util.Validator;
@@ -51,7 +65,7 @@ public class FavouritesResource {
 	@PUT
 	@Path("/addFavourite")
 	public Response addFavourite(
-			@QueryParam("groupId") long groupId, 
+			@QueryParam("groupId") long groupId,
 			@QueryParam("userId") long userId,
 			@QueryParam("assetEntryId") long assetEntryId) {
 
@@ -70,7 +84,7 @@ public class FavouritesResource {
 	@Path("/isFavourite")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Boolean isFavourite(
-			@QueryParam("groupId") long groupId, 
+			@QueryParam("groupId") long groupId,
 			@QueryParam("userId") long userId,
 			@QueryParam("assetEntryId") long assetEntryId) {
 		return FavouriteLocalServiceUtil.isFavourite(groupId, userId, assetEntryId);
@@ -80,7 +94,7 @@ public class FavouritesResource {
 	@Path("/isFavouriteArray")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Boolean[] isFavouriteArray(
-			@QueryParam("groupId") long groupId, 
+			@QueryParam("groupId") long groupId,
 			@QueryParam("userId") long userId,
 			@QueryParam("assetEntryId") Long[] assetEntryIds) {
 
@@ -97,8 +111,8 @@ public class FavouritesResource {
 	@Path("/getFavourites")
 	@Produces(MediaType.APPLICATION_JSON)
 	public FavouriteJSONModel[] getFavourites(
-		@QueryParam("groupId") long groupId, 
-		@QueryParam("userId") long userId) {
+			@QueryParam("groupId") long groupId,
+			@QueryParam("userId") long userId) {
 
 		return getUserFavouritesJSON(groupId, userId);
 	}
@@ -106,13 +120,13 @@ public class FavouritesResource {
 	@DELETE
 	@Path("/removeFavourite")
 	public Response removeFavourite(
-		@QueryParam("groupId") long groupId,
-		@QueryParam("userId") long userId,
-		@QueryParam("assetEntryId") long assetEntryId) {
+			@QueryParam("groupId") long groupId,
+			@QueryParam("userId") long userId,
+			@QueryParam("assetEntryId") long assetEntryId) {
 
 		try {
 			FavouriteLocalServiceUtil.removeFavourite(groupId, assetEntryId, userId);
-			
+
 			return _accepted();
 		} catch (PortalException e) {
 			// TODO Auto-generated catch block
@@ -120,6 +134,149 @@ public class FavouritesResource {
 		}
 
 		return _badRequest();
+	}
+
+	@PUT
+	@Path("/addAssetLike")
+	public Response addAssetLike(
+			@QueryParam("assetEntryId") long assetEntryId,
+			@QueryParam("userId") long userId) {
+
+		try {
+			User user = UserLocalServiceUtil.fetchUser(userId);
+			AssetEntry assetEntry = AssetEntryLocalServiceUtil.fetchAssetEntry(assetEntryId);
+			RatingsEntry ratingsEntry = RatingsEntryLocalServiceUtil
+					.createRatingsEntry(CounterLocalServiceUtil.increment());
+
+			ratingsEntry.setCompanyId(user.getCompanyId());
+			ratingsEntry.setUserId(userId);
+			ratingsEntry.setUserName(user.getFullName());
+			ratingsEntry.setCreateDate(new Date());
+			ratingsEntry.setModifiedDate(new Date());
+			ratingsEntry.setClassNameId(assetEntry.getClassNameId());
+			ratingsEntry.setClassPK(assetEntry.getClassPK());
+			ratingsEntry.setScore(1);
+
+			RatingsEntryLocalServiceUtil.addRatingsEntry(ratingsEntry);
+			return _accepted();
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return _badRequest();
+	}
+
+	@DELETE
+	@Path("/removeAssetLike")
+	public Response removeAssetLike(
+			@QueryParam("userId") long userId,
+			@QueryParam("assetEntryId") long assetEntryId) {
+
+		try {
+			AssetEntry assetEntry = AssetEntryLocalServiceUtil.fetchAssetEntry(assetEntryId);
+			RatingsEntry ratingsEntry = RatingsEntryLocalServiceUtil.fetchEntry(userId, assetEntry.getClassName(),
+					assetEntry.getClassPK());
+
+			RatingsEntryLocalServiceUtil.deleteRatingsEntry(ratingsEntry);
+			return _accepted();
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return _badRequest();
+	}
+
+	@GET
+	@Path("/getAssetsLikedByUserId")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getAssetsLikedByUserId(
+			@QueryParam("userId") long userId,
+			@QueryParam("amount") long amount,
+			@QueryParam("random") boolean random,
+			@QueryParam("content") boolean content) {
+
+		if (Validator.isNotNull(userId)) {
+			JSONObject ratings = JSONFactoryUtil.createJSONObject();
+
+			DynamicQuery dynamicQuery = RatingsEntryLocalServiceUtil.dynamicQuery();
+			dynamicQuery.add(RestrictionsFactoryUtil.eq("userId", userId));
+
+			List<RatingsEntry> ratingsEntries = new ArrayList<>(
+					RatingsEntryLocalServiceUtil.dynamicQuery(dynamicQuery));
+			JSONArray ratingsArray = JSONFactoryUtil.createJSONArray();
+
+			if (Validator.isNotNull(amount)) {
+				if (random) {
+					Random rand = new Random();
+					List<RatingsEntry> randomEntries = new ArrayList<>();
+					for (int i = 0; i < amount; i++) {
+						int randomIndex = rand.nextInt(ratingsEntries.size());
+						randomEntries.add(ratingsEntries.get(randomIndex));
+						ratingsEntries.remove(randomIndex);
+					}
+					ratingsEntries = randomEntries;
+
+				} else {
+					ratingsEntries = ratingsEntries.stream().limit(amount).collect(Collectors.toList());
+				}
+
+				for (RatingsEntry ratingsEntry : ratingsEntries) {
+
+					AssetEntry assetEntry = AssetEntryLocalServiceUtil.fetchEntry(ratingsEntry.getClassNameId(),
+							ratingsEntry.getClassPK());
+					ratingsArray.put(getAsset(assetEntry, content));
+				}
+			}
+
+			ratings.put("data", ratingsArray);
+			return ratings.toString();
+		}
+
+		return null;
+	}
+
+	@GET
+	@Path("/getContent")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getContent(
+			@QueryParam("assetEntryId") Long assetEntryId) {
+
+		AssetEntry assetEntry = AssetEntryLocalServiceUtil.fetchAssetEntry(assetEntryId);
+		return getAsset(assetEntry, true).toString();
+
+	}
+
+	@GET
+	@Path("/isFavouriteAndLikedArray")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String isFavouriteAndLikedArray(
+			@QueryParam("groupId") long groupId,
+			@QueryParam("userId") long userId,
+			@QueryParam("assetEntryId") Long[] assetEntryIds) {
+
+		JSONObject response = JSONFactoryUtil.createJSONObject();
+		for (int i = 0; i < assetEntryIds.length; i++) {
+
+			JSONArray array = JSONFactoryUtil.createJSONArray();
+			JSONObject obj = JSONFactoryUtil.createJSONObject();
+			obj.put("favourite", FavouriteLocalServiceUtil.isFavourite(groupId, userId, assetEntryIds[i]));
+			AssetEntry assetEntry = AssetEntryLocalServiceUtil.fetchAssetEntry(assetEntryIds[i]);
+			RatingsEntry ratingsEntry = RatingsEntryLocalServiceUtil.fetchEntry(userId, assetEntry.getClassName(),
+					assetEntry.getClassPK());
+			if (ratingsEntry == null) {
+				obj.put("liked", false);
+			} else {
+				obj.put("liked", true);
+			}
+
+			array.put(obj);
+			response.put(assetEntryIds[i].toString(), array);
+		}
+
+		return response.toString();
 	}
 
 	private FavouriteJSONModel[] getUserFavouritesJSON(long groupId, long userId) {
@@ -141,11 +298,14 @@ public class FavouritesResource {
 
 				String parentTitle = wikiPage.getTitle();
 
-				if (!parentTitle.equals("Learn") && !parentTitle.equals("Share") && !parentTitle.equals("People") && !parentTitle.equals("Excellence")) {
+				if (!parentTitle.equals("Learn") && !parentTitle.equals("Share") && !parentTitle.equals("People")
+						&& !parentTitle.equals("Excellence")) {
 
 					parentTitle = wikiPage.getParentTitle();
 
-					while (Validator.isNotNull(parentTitle) && !parentTitle.equals("Learn") && !parentTitle.equals("Share") && !parentTitle.equals("People") && !parentTitle.equals("Excellence")) {
+					while (Validator.isNotNull(parentTitle) && !parentTitle.equals("Learn")
+							&& !parentTitle.equals("Share") && !parentTitle.equals("People")
+							&& !parentTitle.equals("Excellence")) {
 
 						wikiPage = wikiPage.getParentPage();
 
@@ -153,29 +313,29 @@ public class FavouritesResource {
 					}
 				}
 
-				if (!parentTitle.equals("Excellence") && !parentTitle.equals("Learn") && !parentTitle.equals("Share") && !parentTitle.equals("People")) {
+				if (!parentTitle.equals("Excellence") && !parentTitle.equals("Learn") && !parentTitle.equals("Share")
+						&& !parentTitle.equals("People")) {
 					parentTitle = "Share";
 				}
-				
+
 				favouritesArray[i] = new FavouriteJSONModel();
 
 				favouritesArray[i].setArticleAuthor(user.getFullName());
-				favouritesArray[i].setAuthorAvatar(
-					UserConstants.getPortraitURL(PortalUtil.getPathImage(), user.getMale(),
-							user.getPortraitId(), user.getUserUuid()));
-				favouritesArray[i].setCreateDate(
-					DateFormat.getDateInstance(DateFormat.MEDIUM).format(asset.getCreateDate()));
+				favouritesArray[i].setAuthorAvatar(UserConstants.getPortraitURL(PortalUtil.getPathImage(),
+						user.getMale(), user.getPortraitId(), user.getUserUuid()));
+				favouritesArray[i]
+						.setCreateDate(DateFormat.getDateInstance(DateFormat.MEDIUM).format(asset.getCreateDate()));
 				favouritesArray[i].setArticleTitle(asset.getTitle());
 				favouritesArray[i].setArticleCategory(parentTitle);
 				favouritesArray[i].setId(asset.getEntryId());
 				favouritesArray[i].setTagNames(getTags(asset));
+				favouritesArray[i].setReadCount(asset.getViewCount());
 
 				i++;
 			}
 
 			return favouritesArray;
-		}
-		catch (PortalException e) {
+		} catch (PortalException e) {
 			e.printStackTrace();
 		}
 
@@ -198,6 +358,57 @@ public class FavouritesResource {
 		return tagNames;
 	}
 
+	private JSONObject getAsset(AssetEntry assetEntry, boolean content) {
+
+		try {
+
+			AssetRenderer<?> assetRenderer = assetEntry.getAssetRenderer();
+			User user = UserLocalServiceUtil.fetchUser(assetRenderer.getUserId());
+			JSONObject asset = JSONFactoryUtil.createJSONObject();
+
+			asset.put("articleAuthor", user.getFullName());
+			asset.put("articleTitle", assetEntry.getTitle());
+			asset.put("authorAvatar", UserConstants.getPortraitURL(PortalUtil.getPathImage(), user.getMale(),
+					user.getPortraitId(), user.getUserUuid()));
+			asset.put("createDate", DateFormat.getDateInstance(DateFormat.MEDIUM).format(assetEntry.getCreateDate()));
+
+			if (content) {
+				WikiPage wikiPage = WikiPageLocalServiceUtil.getPage(assetEntry.getClassPK());
+				asset.put("content", wikiPage.getContent());
+			}
+
+			if (!assetEntry.getTags().isEmpty()) {
+				JSONArray tagNames = JSONFactoryUtil.createJSONArray();
+
+				for (String tag : assetEntry.getTagNames()) {
+					tagNames.put(tag);
+				}
+
+				asset.put("tags", tagNames);
+			}
+
+			asset.put("readCount", assetEntry.getViewCount());
+
+			if (!assetEntry.getCategories().isEmpty()) {
+				JSONArray categories = JSONFactoryUtil.createJSONArray();
+
+				for (AssetCategory category : assetEntry.getCategories()) {
+
+					categories.put(category.getName());
+				}
+
+				asset.put("categories", categories);
+			}
+
+			asset.put("id", assetEntry.getEntryId());
+			return asset;
+		} catch (PortalException pe) {
+			pe.printStackTrace();
+		}
+		return null;
+
+	}
+
 	private Response _accepted() {
 		Response.ResponseBuilder responseBuilder = Response.accepted();
 
@@ -209,4 +420,5 @@ public class FavouritesResource {
 
 		return responseBuilder.build();
 	}
+
 }

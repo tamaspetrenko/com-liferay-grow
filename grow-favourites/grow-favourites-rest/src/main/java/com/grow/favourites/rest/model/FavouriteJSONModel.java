@@ -80,11 +80,21 @@ public class FavouriteJSONModel {
 		this._tagNames = _tagNames;
 	}
 
+	@XmlElement
+	public int getReadCount() {
+		return _readCount;
+	}
+
+	public void setReadCount(int _readCount) {
+		this._readCount = _readCount;
+	}
+
 	private String _articleAuthor;
 	private String _authorAvatar;
 	private String _createDate;
 	private String _articleTitle;
 	private String _articleCategory;
 	private Long _id;
+	private int _readCount;
 	private String[] _tagNames;
 }
