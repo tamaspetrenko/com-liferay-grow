@@ -222,13 +222,13 @@ public class FavouritesResource {
 				} else {
 					ratingsEntries = ratingsEntries.stream().limit(amount).collect(Collectors.toList());
 				}
+			}
+			
+			for (RatingsEntry ratingsEntry : ratingsEntries) {
 
-				for (RatingsEntry ratingsEntry : ratingsEntries) {
-
-					AssetEntry assetEntry = AssetEntryLocalServiceUtil.fetchEntry(ratingsEntry.getClassNameId(),
-							ratingsEntry.getClassPK());
-					ratingsArray.put(getAsset(assetEntry, content));
-				}
+				AssetEntry assetEntry = AssetEntryLocalServiceUtil.fetchEntry(ratingsEntry.getClassNameId(),
+						ratingsEntry.getClassPK());
+				ratingsArray.put(getAsset(assetEntry, content));
 			}
 
 			ratings.put("data", ratingsArray);
@@ -262,7 +262,6 @@ public class FavouritesResource {
 
 			JSONArray array = JSONFactoryUtil.createJSONArray();
 			JSONObject obj = JSONFactoryUtil.createJSONObject();
-			obj.put("favourite", FavouriteLocalServiceUtil.isFavourite(groupId, userId, assetEntryIds[i]));
 			AssetEntry assetEntry = AssetEntryLocalServiceUtil.fetchAssetEntry(assetEntryIds[i]);
 			RatingsEntry ratingsEntry = RatingsEntryLocalServiceUtil.fetchEntry(userId, assetEntry.getClassName(),
 					assetEntry.getClassPK());
@@ -271,7 +270,7 @@ public class FavouritesResource {
 			} else {
 				obj.put("liked", true);
 			}
-
+			obj.put("favourite", FavouriteLocalServiceUtil.isFavourite(groupId, userId, assetEntryIds[i]));
 			array.put(obj);
 			response.put(assetEntryIds[i].toString(), array);
 		}
