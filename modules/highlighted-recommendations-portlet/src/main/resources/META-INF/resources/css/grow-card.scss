@@ -1,0 +1,109 @@
+.lexicon-icon-star-o,
+.lexicon-icon-star {
+	fill: #ffdf00 !important;
+}
+
+.thumbs-up {
+	fill: #3b5998 !important;
+}
+
+.thumbs-up-liked {
+	fill: #8b9dc3 !important;
+}
+
+.label-remaining-tags {
+	border-style: none;
+}
+
+.grow-card {
+	border-bottom: 0.6rem solid #fff;
+	
+	.grow-card-title {
+		min-height: 3.5rem;
+	}
+	.grow-card-cont {
+		font-size: 14px;
+		min-height: 5.25rem;
+	}
+	.grow-card-footer {
+		min-height: 6rem;
+	}
+	.grow-card-tag {
+		min-height: 3.5rem;
+	}
+	.btn {
+		padding: 0.4375rem 0.4375rem;
+	}
+	a {
+		color: #09101D;
+		text-decoration: none;
+	}
+}
+
+.grow-card .card-body {
+	padding: 1rem 1rem 0.65rem 1rem;
+
+	h3 {
+		font-size: 1.125rem;
+	}
+}
+
+.grow-card {
+	box-shadow: 0 0 0 0;
+
+	@media only screen and (max-width: 756px) {
+        box-shadow: 0 1px 10px -4px rgba(0, 0, 0, 0.6);
+    }
+}
+
+.grow-card:hover {
+	box-shadow: 0 1px 10px -4px rgba(0, 0, 0, 0.6);
+}
+
+.card-excellence:hover {
+	border-color: #E55E75;
+}
+
+.card-excellence:hover * .excellence-footer-active {
+	color: #E55E75;
+}
+
+.card-learn:hover {
+	border-color: #503690;
+}
+
+.card-learn:hover * .learn-footer-active {
+	color: #503690;
+}
+
+.card-people:hover {
+	border-color: #47C6F5;
+}
+
+.card-people:hover * .people-footer-active {
+	color: #47C6F5;
+}
+
+.card-share:hover {
+	border-color: #42BFC2;
+}
+
+.card-share:hover * .share-footer-active {
+	color: #42BFC2;
+}
+
+.excellence-footer-inactive {
+	color: #ef9eac;
+}
+
+.learn-footer-inactive {
+	color: #9686bc;
+}
+
+.people-footer-inactive {
+	color: #90dcf9;
+}
+
+.share-footer-inactive {
+	color: #8dd8da;
+}

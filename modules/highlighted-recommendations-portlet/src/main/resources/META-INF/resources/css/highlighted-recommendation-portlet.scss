@@ -1,0 +1,59 @@
+@import "variables";
+
+.highlighted-recommendation-portlet {
+	background-color: #FFFFFF;
+	
+	.loading-indicator {
+		background-color: transparent;
+		transform: translate(-50%, -50%);
+		position: absolute;
+		left: 50%;
+		top: 48%;
+		z-index: 5;
+	}
+	
+	.highlighted-recommendation-portlet-left-panel {
+
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+		margin-top: 3rem;
+
+		@media only screen and (max-width: 1280px) {
+			padding: 0;
+		}
+	}
+ 
+	.highlighted {
+		font-weight: 700;
+		font-size: 36px;
+		line-height: 45px;
+		padding-bottom: 24px;
+	}
+	
+	.highligted-card {
+		padding: 48px 152px 26px 0px;
+		position: relative;
+		left: -70px;
+	}
+
+	h2 {
+		font-weight: 600;
+		font-size: 1.125rem;
+	}
+	
+	.excellence-backgroundcolor {
+		background-color: $excellence-color;
+	}
+	
+	.share-backgroundcolor {
+		background-color: $share-color;
+	}
+	
+	.learn-backgroundcolor {
+		background-color: $learn-color;
+	}
+	
+	.people-backgroundcolor{
+		background-color: $people-color;
+	}
+}
