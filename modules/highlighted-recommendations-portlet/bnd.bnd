@@ -1,0 +1,5 @@
+Bundle-Name: HighlightedRecommendationPortlet
+Bundle-SymbolicName: highlightedrecommendationportlet
+Bundle-Version: 1.0.0
+Export-Package: highlightedrecommendationportlet.constants
+Web-ContextPath: /HighlightedRecommendationPortlet
