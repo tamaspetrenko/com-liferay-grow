@@ -5,9 +5,7 @@
 	@import "wiki_navs";
 	
 	a, a:hover  {
-		color: $wiki-link-color !important;
-		text-decoration: none !important;
-		
+		color: $wiki-link-color;
 	}
 	
 	.label {
