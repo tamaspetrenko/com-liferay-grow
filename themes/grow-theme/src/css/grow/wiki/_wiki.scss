@@ -68,6 +68,16 @@
 		color: $primary; 
 	}
 
+	/*
+	 * Comments section
+	 */
+	#wikiComments{
+		margin-left: $wiki-actions-button-width;
+
+		@include sm() {
+			margin-left: $wiki-content-padding + $wiki-actions-button-width;
+		}
+	}
 
 	/*
 	 * StackEdit: Applied on the edit view

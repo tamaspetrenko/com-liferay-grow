@@ -277,10 +277,8 @@
 		</div>
 	</div>
 </div>
-<div class="comments content">
-	<h4 class="text-default">Comments</h4>
-	<@displayComments/>
-</div>
+
+<@displayComments/>
 
 <#--   macros   -->
 
@@ -380,16 +378,32 @@ ${viewPageDetailsURL.setParameter("mvcRenderCommandName", "/wiki/view_page_detai
 </#macro>
 
 <#macro displayComments>
-	<@liferay_ui["discussion"]
-		className=wikiPageClassName
-		classPK=entry.getResourcePrimKey()
-		formAction="/c/portal/comment/edit_discussion"
-		formName="fm2"
-		ratingsEnabled=wikiPortletInstanceOverriddenConfiguration.enableCommentRatings()
-		redirect=currentURL
-		subject=entry.getTitle()
-		userId=assetRenderer.getUserId()
-	/>
+	<div id="wikiComments" class="px-3">
+		<@liferay_ui["panel-container"]
+			extended=false
+			markupView="lexicon"
+			persistState=true
+		>
+			<@liferay_ui["panel"]
+				collapsible=true
+				extended=true
+				id="wikiCommentsPanel"
+				markupView="lexicon"
+				persistState=true
+				title="comments"
+			>
+				<@liferay_comment["discussion"]
+					className=wikiPageClassName
+					classPK=entry.getResourcePrimKey()
+					formName="fm2"
+					ratingsEnabled=wikiPortletInstanceOverriddenConfiguration.enableCommentRatings()
+					redirect=currentURL
+					userId=assetRenderer.getUserId()
+				>
+				</@>
+			</@>
+		</@>
+	</div>
 </#macro>
 
 <#macro displayAttachmentAccordion>
