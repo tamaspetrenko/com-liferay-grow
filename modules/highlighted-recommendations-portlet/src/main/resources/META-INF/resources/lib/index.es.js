@@ -322,7 +322,7 @@ class App extends React.Component {
 							</div>
 							<div
 								className={
-									"col-xl-8 " + this.state.articleCategory.toLowerCase() + "-backgroundcolor"
+									"col-xl-8 highlighted-wrapper " + this.state.articleCategory.toLowerCase() + "-backgroundcolor"
 								} 
 							>
 								{isLoading && (

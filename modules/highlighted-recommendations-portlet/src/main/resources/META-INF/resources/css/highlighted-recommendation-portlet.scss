@@ -2,7 +2,9 @@
 
 .highlighted-recommendation-portlet {
 	background-color: #FFFFFF;
-	
+	@media only screen and (max-width: 674px) {
+		margin-left: 1rem;	
+	}
 	.loading-indicator {
 		background-color: transparent;
 		transform: translate(-50%, -50%);
@@ -27,13 +29,24 @@
 		font-weight: 700;
 		font-size: 36px;
 		line-height: 45px;
-		padding-bottom: 24px;
+		padding-bottom: 1rem;
+
+		@media only screen and (max-width: 1280px) {
+			padding-bottom: 0;
+		}
 	}
 	
 	.highligted-card {
-		padding: 48px 152px 26px 0px;
+		padding: 48px 0rem 26px 0px;
 		position: relative;
-		left: -70px;
+		left: -3rem;
+	}
+
+	.highlighted-wrapper {
+		@media only screen and (max-width: 1280px) {
+			max-width: 50rem;
+			margin-top: 1rem;
+		}
 	}
 
 	h2 {
