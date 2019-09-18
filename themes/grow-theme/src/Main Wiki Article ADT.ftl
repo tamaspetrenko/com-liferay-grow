@@ -576,7 +576,6 @@ ${viewPageDetailsURL.setParameter("mvcRenderCommandName", "/wiki/view_page_detai
 		});
 		
 		document.querySelector(".grow-wiki-body #favouriteButton").addEventListener('click', function(event){ 
-			debugger;
 
 			if (window.isFavourite) {
 				var api = window.portalUrl + "/o/favourites/removeFavourite?groupId=" + window.groupId + "&userId=" + window.userId + "&assetEntryId=" + window.assetEntryId;
