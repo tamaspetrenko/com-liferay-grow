@@ -288,7 +288,7 @@ class App extends React.Component {
 				<div className="container">
 					{this.props.articleToRecommend == "" ? (
 						<div className="row">
-							<div className="col-xl-4">
+							<div className="col-xl-5">
 								<div className="higlighted-recommendation-porltet-left-panel">
 									<h1 className="highlighted">
 										Configure the Portlet in order to Highlight an Article!
@@ -300,7 +300,7 @@ class App extends React.Component {
 								</div>
 							</div>
 
-							<div className="col-xl-8">
+							<div className="col-xl-7">
 								<div className="loading-indicator">
 									<span aria-hidden="true" className="loading-animation"></span>
 								</div>
@@ -308,7 +308,7 @@ class App extends React.Component {
 						</div>
 					) : (
 						<div className="row">
-							<div className="col-xl-4">
+							<div className="col-xl-5">
 								<div className="higlighted-recommendation-porltet-left-panel">
 									<h1 className="highlighted">
 										Highlighted
@@ -322,7 +322,7 @@ class App extends React.Component {
 							</div>
 							<div
 								className={
-									"col-xl-8 highlighted-wrapper " + this.state.articleCategory.toLowerCase() + "-backgroundcolor"
+									"col-xl-7 highlighted-wrapper " + this.state.articleCategory.toLowerCase() + "-backgroundcolor"
 								} 
 							>
 								{isLoading && (
