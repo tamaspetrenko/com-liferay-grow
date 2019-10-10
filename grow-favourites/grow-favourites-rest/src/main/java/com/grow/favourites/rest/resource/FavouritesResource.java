@@ -388,16 +388,32 @@ public class FavouritesResource {
 
 			asset.put("readCount", assetEntry.getViewCount());
 
-			if (!assetEntry.getCategories().isEmpty()) {
-				JSONArray categories = JSONFactoryUtil.createJSONArray();
+			
+			WikiPage wikiPage = WikiPageLocalServiceUtil.getPage(assetEntry.getClassPK());
 
-				for (AssetCategory category : assetEntry.getCategories()) {
+			String parentTitle = wikiPage.getTitle();
 
-					categories.put(category.getName());
+			if (!parentTitle.equals("Learn") && !parentTitle.equals("Share") && !parentTitle.equals("People")
+					&& !parentTitle.equals("Excellence")) {
+
+				parentTitle = wikiPage.getParentTitle();
+
+				while (Validator.isNotNull(parentTitle) && !parentTitle.equals("Learn")
+						&& !parentTitle.equals("Share") && !parentTitle.equals("People")
+						&& !parentTitle.equals("Excellence")) {
+
+					wikiPage = wikiPage.getParentPage();
+
+					parentTitle = wikiPage.getParentTitle();
 				}
-
-				asset.put("categories", categories);
 			}
+
+			if (!parentTitle.equals("Excellence") && !parentTitle.equals("Learn") && !parentTitle.equals("Share")
+					&& !parentTitle.equals("People")) {
+				parentTitle = "Share";
+			}
+
+			asset.put("articleCategory", parentTitle);
 
 			asset.put("id", assetEntry.getEntryId());
 			return asset;
