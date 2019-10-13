@@ -47,8 +47,14 @@
 		}
 
 		.grow-title {
-			font-size: 18px;
-			font-weight: 500;
+			font-size: 1.125rem;
+			font-weight: 600;
+			line-height: 1.6875rem;
+
+			@media only screen and (max-width: 768px) {
+				font-size: 0.875rem;
+				line-height: 1.3125rem;
+ 			}
 		}
 
 		.autofit-padded>.autofit-col {
