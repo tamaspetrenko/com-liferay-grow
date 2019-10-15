@@ -5,9 +5,11 @@ package com.grow.favourites.rest.resource;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.Random;
 
@@ -291,14 +293,17 @@ public class FavouritesResource {
 			int i = 0;
 
 			for (Favourite favourite : favourites) {
+				
 				AssetEntry asset = AssetEntryLocalServiceUtil.fetchAssetEntry(favourite.getAssetEntryId());
-				User user = UserLocalServiceUtil.fetchUser(asset.getUserId());
 
 				if (asset == null) {
 					continue;
 				}
+				
+				User user = UserLocalServiceUtil.fetchUser(asset.getUserId());
 				WikiPage wikiPage = WikiPageLocalServiceUtil.getPage(asset.getClassPK());
-
+				
+				
 				String parentTitle = wikiPage.getTitle();
 
 				if (!parentTitle.equals("Learn") && !parentTitle.equals("Share") && !parentTitle.equals("People")
@@ -336,8 +341,8 @@ public class FavouritesResource {
 
 				i++;
 			}
-
-			return favouritesArray;
+			FavouriteJSONModel[] cleanedArray = Arrays.stream(favouritesArray).filter(Objects::nonNull).toArray(FavouriteJSONModel[]::new);
+			return cleanedArray;
 		} catch (PortalException e) {
 			e.printStackTrace();
 		}
