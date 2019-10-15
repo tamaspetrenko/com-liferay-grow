@@ -23,7 +23,6 @@ import javax.ws.rs.core.Response;
 import com.grow.favourites.model.Favourite;
 import com.grow.favourites.rest.model.FavouriteJSONModel;
 import com.grow.favourites.service.FavouriteLocalServiceUtil;
-import com.liferay.asset.kernel.model.AssetCategory;
 import com.liferay.asset.kernel.model.AssetEntry;
 import com.liferay.asset.kernel.model.AssetTag;
 import com.liferay.asset.kernel.model.AssetRenderer;
@@ -38,6 +37,7 @@ import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.model.UserConstants;
+import com.liferay.portal.kernel.util.LocaleUtil;
 import com.liferay.portal.kernel.service.UserLocalServiceUtil;
 import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.ratings.kernel.model.RatingsEntry;
@@ -226,9 +226,13 @@ public class FavouritesResource {
 			
 			for (RatingsEntry ratingsEntry : ratingsEntries) {
 
-				AssetEntry assetEntry = AssetEntryLocalServiceUtil.fetchEntry(ratingsEntry.getClassNameId(),
-						ratingsEntry.getClassPK());
-				ratingsArray.put(getAsset(assetEntry, content));
+				try {
+					AssetEntry assetEntry = AssetEntryLocalServiceUtil.fetchEntry(ratingsEntry.getClassNameId(),
+							ratingsEntry.getClassPK());
+					ratingsArray.put(getAsset(assetEntry, content));
+				} catch (Exception e) {
+						e.printStackTrace();
+				}
 			}
 
 			ratings.put("data", ratingsArray);
@@ -372,8 +376,7 @@ public class FavouritesResource {
 			asset.put("createDate", DateFormat.getDateInstance(DateFormat.MEDIUM).format(assetEntry.getCreateDate()));
 
 			if (content) {
-				WikiPage wikiPage = WikiPageLocalServiceUtil.getPage(assetEntry.getClassPK());
-				asset.put("content", wikiPage.getContent());
+				asset.put("content", assetRenderer.getSearchSummary(LocaleUtil.getSiteDefault()));
 			}
 
 			if (!assetEntry.getTags().isEmpty()) {
