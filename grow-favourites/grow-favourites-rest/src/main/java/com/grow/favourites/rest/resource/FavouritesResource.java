@@ -7,11 +7,11 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.Random;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -73,7 +73,6 @@ public class FavouritesResource {
 
 		try {
 			FavouriteLocalServiceUtil.addFavourite(groupId, assetEntryId, userId);
-
 			return _accepted();
 		} catch (PortalException e) {
 			// TODO Auto-generated catch block
@@ -211,19 +210,8 @@ public class FavouritesResource {
 			JSONArray ratingsArray = JSONFactoryUtil.createJSONArray();
 
 			if (Validator.isNotNull(amount)) {
-				if (random) {
-					Random rand = new Random();
-					List<RatingsEntry> randomEntries = new ArrayList<>();
-					for (int i = 0; i < amount; i++) {
-						int randomIndex = rand.nextInt(ratingsEntries.size());
-						randomEntries.add(ratingsEntries.get(randomIndex));
-						ratingsEntries.remove(randomIndex);
-					}
-					ratingsEntries = randomEntries;
-
-				} else {
-					ratingsEntries = ratingsEntries.stream().limit(amount).collect(Collectors.toList());
-				}
+				if (random && ratingsEntries.size() > 0) Collections.shuffle(ratingsEntries);
+				ratingsEntries = ratingsEntries.stream().limit(amount).collect(Collectors.toList());
 			}
 			
 			for (RatingsEntry ratingsEntry : ratingsEntries) {
