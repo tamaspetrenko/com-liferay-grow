@@ -46,7 +46,13 @@
  					</#if>
  
  					<#if navItem.isBrowsable()>
- 						<#assign nav_item_href_link = "href='${navItem.getURL()}'" />
+						<#if navItem.getName()?contains("People") || navItem.getName()?contains("Learn") || navItem.getName()?contains("Excellence") || navItem.getName()?contains("Share")>
+							<#assign grow_link><@getURLWithWiki name="${navItem.getName()}"/></#assign>
+						
+							<#assign nav_item_href_link = "href='${grow_link}'" />
+ 						<#else>
+							<#assign nav_item_href_link = "href='${navItem.getURL()}'" />
+						</#if>
  					</#if>
  
  					<#if navItem.isSelected()>
@@ -97,14 +103,10 @@
  	</@>
  </#if>
 
-<#macro getURLWithWiki name url>
+<#macro getURLWithWiki name>
 	<#assign portalURL = portal.getPortalURL(request)>
 	<#assign privateFriendlyURL = prefsPropsUtil.getString(companyId, "layout.friendly.url.private.group.servlet.mapping")> 
 	<#assign siteFriendlyURL = themeDisplay.getSiteGroup().getFriendlyURL()>
 
-	<#if (name?lower_case == "people") || (name?lower_case == "learn") || (name?lower_case == "excellence") || (name?lower_case == "share")>
-		${portalURL}${privateFriendlyURL}${siteFriendlyURL}/${name}/-/wiki/Grow/${name?replace(" ", "+")}
-	<#else>
-		${url}
-	</#if>
+	${portalURL}${privateFriendlyURL}${siteFriendlyURL}/${name}/-/wiki/Grow/${name?replace(" ", "+")}
 </#macro>
