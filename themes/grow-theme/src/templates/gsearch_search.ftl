@@ -1,10 +1,7 @@
-<#assign VOID = freeMarkerPortletPreferences.setValue("portletSetupPortletDecoratorId", "barebone") />
-<#assign VOID = freeMarkerPortletPreferences.setValue("showListed", "false") />
-<#assign VOID = freeMarkerPortletPreferences.setValue("targetPortletId", "") />
+<#assign gsearch_preferences = freeMarkerPortletPreferences.getPreferences({"showListed": "false", "portletSetupPortletDecoratorId": "barebone", "targetPortletId": ""}) />
 
 <@liferay_portlet["runtime"]
-    defaultPreferences="${freeMarkerPortletPreferences}"
+    defaultPreferences="${gsearch_preferences}"
     portletProviderAction=portletProviderAction.VIEW
     portletName="gsearchminiportlet"
 />
-<#assign VOID = freeMarkerPortletPreferences.reset() />
