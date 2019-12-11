@@ -5,17 +5,6 @@ import ReactResizeDetector from 'react-resize-detector';
 
 import GrowCard from './modules/GrowCard.es';
 
-const mockupData = {
-			articleAuthor: "Author 01",
-			authorAvatar: "/o/HighlightedRecommendationPortlet/images/0.jpeg",
-			createDate: "01.01.2019",
-			articleTitle: "Title 01",
-			articleContent: "",
-			tags: ["badge", "gamification", "respect", "test1", "test2"],
-			readCount: "626",
-			articleCategory: "Share"
-		};
-
 class App extends React.Component {
 	
 	constructor(props) {
@@ -23,18 +12,19 @@ class App extends React.Component {
 		
 		const GROUP_ID = Liferay.ThemeDisplay.getCompanyGroupId();
 		const USER_ID = Liferay.ThemeDisplay.getUserId();
+		const AUTH_TOKEN = Liferay.authToken;
 
 		this.SPRITEMAP = Liferay.ThemeDisplay.getPathThemeImages();
 		this.PORTAL_URL = Liferay.ThemeDisplay.getCDNBaseURL();
 
-		this.GET_HIGHLIGHTED_QUERY = "/o/favourites/getContent?assetEntryId=";
-		this.ADD_TO_MYFAVOURITES_QUERY = this.PORTAL_URL + "/o/favourites/addFavourite?groupId=" + GROUP_ID + "&userId=" + USER_ID + "&assetEntryId=";
+		this.GET_HIGHLIGHTED_QUERY = "/o/favourites/getContent?p_auth=" + AUTH_TOKEN + "&assetEntryId=";
+		this.ADD_TO_MYFAVOURITES_QUERY = this.PORTAL_URL + "/o/favourites/addFavourite?p_auth=" + AUTH_TOKEN + "&groupId=" + GROUP_ID + "&userId=" + USER_ID + "&assetEntryId=";
 
-		this.REMOVE_FROM_MYFAVOURITES_QUERY = this.PORTAL_URL + "/o/favourites/removeFavourite?groupId=" + GROUP_ID + "&userId=" + USER_ID + "&assetEntryId=";
-		this.GET_ISFAVOURITE_AND_LIKED_ARRAY = this.PORTAL_URL + "/o/favourites/isFavouriteAndLikedArray?groupId="+ GROUP_ID + "&userId=" + USER_ID + "&assetEntryId=";
+		this.REMOVE_FROM_MYFAVOURITES_QUERY = this.PORTAL_URL + "/o/favourites/removeFavourite?p_auth=" + AUTH_TOKEN + "&groupId=" + GROUP_ID + "&userId=" + USER_ID + "&assetEntryId=";
+		this.GET_ISFAVOURITE_AND_LIKED_ARRAY = this.PORTAL_URL + "/o/favourites/isFavouriteAndLikedArray?p_auth=" + AUTH_TOKEN + "&groupId="+ GROUP_ID + "&userId=" + USER_ID + "&assetEntryId=";
 
-		this.ADD_ASSET_LIKE = this.PORTAL_URL + "/o/favourites/addAssetLike?userId=" + USER_ID + "&assetEntryId=";
-		this.REMOVE_ASSET_LIKE = this.PORTAL_URL + "/o/favourites/removeAssetLike?&userId=" + USER_ID + "&assetEntryId=";
+		this.ADD_ASSET_LIKE = this.PORTAL_URL + "/o/favourites/addAssetLike?p_auth=" + AUTH_TOKEN + "&userId=" + USER_ID + "&assetEntryId=";
+		this.REMOVE_ASSET_LIKE = this.PORTAL_URL + "/o/favourites/removeAssetLike?p_auth=" + AUTH_TOKEN + "&userId=" + USER_ID + "&assetEntryId=";
 
 		this.RECOMMENDATION_TOGGLE_LIKE_EVENT = 'recommendationToggleLikeEvent'
 		this.RECOMMENDATION_TOGGLE_STAR_EVENT = 'recommendationToggleStarEvent';
