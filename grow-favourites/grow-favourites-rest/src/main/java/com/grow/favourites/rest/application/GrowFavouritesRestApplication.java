@@ -9,8 +9,8 @@ import org.osgi.service.component.annotations.Component;
  */
 @Component(
 	property = {
-		"auth.verifier.auth.verifier.BasicAuthHeaderAuthVerifier.urls.includes=/*",
-		"auth.verifier.auth.verifier.PortalSessionAuthVerifier.urls.includes=/*",
+		"auth.verifier.BasicAuthHeaderAuthVerifier.urls.includes=/*",
+		"auth.verifier.PortalSessionAuthVerifier.urls.includes=/*",
 		"osgi.jaxrs.application.base=/favourites",
 		"osgi.jaxrs.extension.select=(osgi.jaxrs.name=jaxb-json)",
 		"osgi.jaxrs.extension.select=(osgi.jaxrs.name=Liferay.Vulcan)",
