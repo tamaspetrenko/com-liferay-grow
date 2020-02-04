@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import axios from 'axios';
 import ReactResizeDetector from 'react-resize-detector';
 
-import GrowCard from './modules/GrowCard.es';
+import { GrowCard } from "grow-clay";
 
 class App extends React.Component {
 	
@@ -14,7 +14,7 @@ class App extends React.Component {
 		const USER_ID = Liferay.ThemeDisplay.getUserId();
 		const AUTH_TOKEN = Liferay.authToken;
 
-		this.SPRITEMAP = Liferay.ThemeDisplay.getPathThemeImages();
+		this.SPRITEMAP = Liferay.ThemeDisplay.getPathThemeImages() + '/icons.svg';
 		this.PORTAL_URL = Liferay.ThemeDisplay.getCDNBaseURL();
 
 		this.GET_HIGHLIGHTED_QUERY = "/o/favourites/getContent?p_auth=" + AUTH_TOKEN + "&assetEntryId=";
@@ -33,7 +33,7 @@ class App extends React.Component {
 
 		this.state = {
 			articleAuthor: "",
-			articleCategory: "",
+			articleCategory: "Share",
 			articleTitle: "",
 			authorAvatar: "",
 			content: "",
@@ -340,6 +340,19 @@ class App extends React.Component {
 										like={this.state.like ? this.state.like : false}
 										star={this.state.star ? this.state.star : false}
 										id={this.state.id}
+										interactive={false}
+										href={this.state.articleTitle ?
+											this.PORTAL_URL +
+											"/" +
+											this.state.articleCategory +
+											"/" +
+											this.state.articleTitle
+												.split(" ")
+												.join("+")
+												.replace(/'/g, '_APOSTROPHE_')
+												.toLowerCase()
+											: undefined
+										}
 									/>
 								</div>
 							</div>
