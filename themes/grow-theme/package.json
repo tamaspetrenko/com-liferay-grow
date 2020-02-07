@@ -25,6 +25,7 @@
 		"tag": "7_0_x"
 	},
 	"dependencies": {
+		"@clayui/css": "^3.3.0",
 		"grow-banner-themelet": "7_0_x",
 		"grow-search-results-themelet": "7_0_x"
 	}
