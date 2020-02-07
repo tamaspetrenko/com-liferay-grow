@@ -337,6 +337,7 @@ class App extends React.Component {
 										articleTags={this.state.tags}
 										articleReadCount={this.state.readCount}
 										articleCategory={this.state.articleCategory}
+										categorytoUpperCase={true}
 										like={this.state.like ? this.state.like : false}
 										star={this.state.star ? this.state.star : false}
 										id={this.state.id}
