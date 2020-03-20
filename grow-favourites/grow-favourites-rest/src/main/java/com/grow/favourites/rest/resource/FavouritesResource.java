@@ -414,6 +414,8 @@ public class FavouritesResource {
 			asset.put("articleCategory", parentTitle);
 
 			asset.put("id", assetEntry.getEntryId());
+			asset.put("url", assetEntry.getUrl());
+			
 			return asset;
 		} catch (PortalException pe) {
 			pe.printStackTrace();
