@@ -40,6 +40,10 @@
 		padding: 48px 0rem 26px 0px;
 		position: relative;
 		left: -3rem;
+	
+		.grow-card-content {
+			min-height:5.75rem !important;
+		}
 	}
 
 	.highlighted-wrapper {
