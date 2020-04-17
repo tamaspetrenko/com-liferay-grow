@@ -1,6 +1,6 @@
-Bundle-Name: HighlightedRecommendationPortlet
-Bundle-SymbolicName: com.liferay.grow.highlighted.recommendation.portlet
+Bundle-Name: HighlightedRecommendation
+Bundle-SymbolicName: com.liferay.grow.highlighted.recommendation
 Bundle-Version: 1.0.0
-Export-Package: highlightedrecommendationportlet.constants
-Web-ContextPath: /HighlightedRecommendationPortlet
+Export-Package: highlightedrecommendation.constants
+Web-ContextPath: /highlighted-recommendation
 -metatype: *

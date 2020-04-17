@@ -1,9 +1,9 @@
-package highlightedrecommendationportlet.constants;
+package highlightedrecommendation.constants;
 
 /**
  * @author rolandpakai
  */
-public class HighlightedRecommendationPortletKeys {
+public class HighlightedRecommendationKeys {
 
 	public static final String HighlightedRecommendation = "highlightedrecommendation";
 

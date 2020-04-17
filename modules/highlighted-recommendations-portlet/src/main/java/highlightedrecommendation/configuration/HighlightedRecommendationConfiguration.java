@@ -1,4 +1,4 @@
-package highlightedrecommendationportlet.configuration;
+package highlightedrecommendation.configuration;
 
 import com.liferay.portal.configuration.metatype.annotations.ExtendedObjectClassDefinition;
 
@@ -9,7 +9,7 @@ import aQute.bnd.annotation.metatype.Meta;
    scope = ExtendedObjectClassDefinition.Scope.PORTLET_INSTANCE
 )
 @Meta.OCD(
-   id = "highlightedrecommendationportlet.configuration.HighlightedRecommendationConfiguration",
+   id = "highlightedrecommendation.configuration.HighlightedRecommendationConfiguration",
    name = "HighlightedRecommendationConfiguration"
    )
 public interface HighlightedRecommendationConfiguration {

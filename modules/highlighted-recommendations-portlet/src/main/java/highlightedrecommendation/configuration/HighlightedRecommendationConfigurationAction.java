@@ -1,4 +1,4 @@
-package highlightedrecommendationportlet.configuration;
+package highlightedrecommendation.configuration;
 
 import java.util.Map;
 
@@ -15,17 +15,17 @@ import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
-import highlightedrecommendationportlet.configuration.HighlightedRecommendationConfiguration;
-import highlightedrecommendationportlet.constants.HighlightedRecommendationPortletKeys;
+import highlightedrecommendation.configuration.HighlightedRecommendationConfiguration;
+import highlightedrecommendation.constants.HighlightedRecommendationKeys;
 import com.liferay.portal.configuration.metatype.bnd.util.ConfigurableUtil;
 import com.liferay.portal.kernel.configuration.Configuration;
 import com.liferay.portal.kernel.portlet.ConfigurationAction;
 import com.liferay.portal.kernel.portlet.DefaultConfigurationAction;
 import com.liferay.portal.kernel.util.ParamUtil;
 
-@Component(configurationPid = "highlightedrecommendationportlet.configuration.HighlightedRecommendationConfiguration", configurationPolicy = ConfigurationPolicy.OPTIONAL, immediate = true, property = {
+@Component(configurationPid = "highlightedrecommendation.configuration.HighlightedRecommendationConfiguration", configurationPolicy = ConfigurationPolicy.OPTIONAL, immediate = true, property = {
         "javax.portlet.name="
-                + HighlightedRecommendationPortletKeys.HighlightedRecommendation }, service = ConfigurationAction.class)
+                + HighlightedRecommendationKeys.HighlightedRecommendation }, service = ConfigurationAction.class)
 public class HighlightedRecommendationConfigurationAction extends DefaultConfigurationAction {
 
     /**
@@ -74,7 +74,7 @@ public class HighlightedRecommendationConfigurationAction extends DefaultConfigu
 	 */
 	@Override
 	@Reference(
-		target = "(osgi.web.symbolicname=highlightedrecommendationportlet)",
+		target = "(osgi.web.symbolicname=com.liferay.grow.highlighted.recommendation)",
 		unbind = "-"
 	)
 	public void setServletContext(ServletContext servletContext) {

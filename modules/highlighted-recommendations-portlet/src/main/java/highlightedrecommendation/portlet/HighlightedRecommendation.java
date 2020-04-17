@@ -1,7 +1,7 @@
-package highlightedrecommendationportlet.portlet;
+package highlightedrecommendation.portlet;
 
-import highlightedrecommendationportlet.configuration.HighlightedRecommendationConfiguration;
-import highlightedrecommendationportlet.constants.HighlightedRecommendationPortletKeys;
+import highlightedrecommendation.configuration.HighlightedRecommendationConfiguration;
+import highlightedrecommendation.constants.HighlightedRecommendationKeys;
 
 import com.liferay.portal.configuration.metatype.bnd.util.ConfigurableUtil;
 import com.liferay.frontend.js.loader.modules.extender.npm.NPMResolver;
@@ -34,13 +34,13 @@ import org.osgi.service.component.annotations.Reference;
 		"com.liferay.portlet.instanceable=true",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.view-template=/view.jsp",
-		"javax.portlet.name=" + HighlightedRecommendationPortletKeys.HighlightedRecommendation,
+		"javax.portlet.name=" + HighlightedRecommendationKeys.HighlightedRecommendation,
 		"javax.portlet.resource-bundle=content.Language",
 		"javax.portlet.security-role-ref=power-user,user"
 	},
 	service = Portlet.class
 )
-public class HighlightedRecommendationPortlet extends MVCPortlet {
+public class HighlightedRecommendation extends MVCPortlet {
 
 	@Override
 	public void doView(
@@ -49,7 +49,7 @@ public class HighlightedRecommendationPortlet extends MVCPortlet {
 
 		renderRequest.setAttribute(
 			"mainRequire",
-			_npmResolver.resolveModuleName("HighlightedRecommendationPortlet") + " as main");
+			_npmResolver.resolveModuleName("highlighted-recommendation") + " as main");
 
 			ThemeDisplay themeDisplay = (ThemeDisplay)renderRequest.getAttribute(
 				WebKeys.THEME_DISPLAY);

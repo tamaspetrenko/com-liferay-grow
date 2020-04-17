@@ -1,4 +1,4 @@
-package highlightedrecommendationportlet.configuration;
+package highlightedrecommendation.configuration;
 
 import com.liferay.portal.kernel.settings.definition.ConfigurationBeanDeclaration;
 
