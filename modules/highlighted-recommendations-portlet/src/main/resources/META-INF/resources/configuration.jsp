@@ -1,7 +1,7 @@
 <%@ include file="/init.jsp" %>
 
 <%@ page import="com.liferay.portal.kernel.util.Constants" %>
-
+<div class="col-md-12">
 <liferay-portlet:actionURL portletConfiguration="<%= true %>"
     var="configurationActionURL" />
 
@@ -26,3 +26,4 @@
         <aui:button type="submit"></aui:button>
     </aui:button-row>
 </aui:form>
+</div>
