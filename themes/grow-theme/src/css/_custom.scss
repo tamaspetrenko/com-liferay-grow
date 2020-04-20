@@ -9,3 +9,7 @@
 @import "grow/_main_navigation_article";
 @import "grow/_portlet";
 @import "grow/wiki/_wiki";
+
+#portlet_com_liferay_wiki_web_portlet_WikiPortlet .navbar {
+    display: none;
+}
