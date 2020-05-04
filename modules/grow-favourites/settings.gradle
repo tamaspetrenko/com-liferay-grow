@@ -1,1 +1,1 @@
-include "GrowFavourites-api", "GrowFavourites-service", "GrowFavourites-rest"
+include "grow-favourites-api", "grow-favourites-service", "grow-favourites-rest"

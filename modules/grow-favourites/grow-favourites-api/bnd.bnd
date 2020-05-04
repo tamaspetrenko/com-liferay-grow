@@ -7,4 +7,4 @@ Export-Package:\
 	com.grow.favourites.service,\
 	com.grow.favourites.service.persistence
 -check: EXPORTS
--includeresource: META-INF/service.xml=../GrowFavourites-service/service.xml
+-includeresource: META-INF/service.xml=../grow-favourites-service/service.xml
